@@ -15,5 +15,5 @@ table.table-striped.table-condensed#skills-table
 .block#basic-attacks
   - @character.powers.each do |p|
     - next unless ["Attack", "Basic Attack"].include? p.display
-    .basic-attack
+    a.unstyled.basic-attack [href="#power_#{p.id}" data-toggle="modal"]
       span class = (p.power_usage.downcase) = p.name

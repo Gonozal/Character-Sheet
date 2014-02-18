@@ -51,8 +51,8 @@
   border-bottom: 0px !important;
   border-top-right-radius: 5px;
   border-top-left-radius: 5px;
-  padding-bottom: 2px;
-  padding-top: 2px;
+  padding-bottom: 4px;
+  padding-top: 4px;
   >h4{
     margin-top: 2px;
     margin-bottom: 2px;
@@ -78,7 +78,7 @@ p.attr-name {
 
 p.flavor {
   background-color: #C8B5A3;
-  margin-top: -15px;
+  margin-top: -16px;
   width: 100%;
   padding-right: 5px;
 }
@@ -172,6 +172,12 @@ tr.abilities:nth-child(2n+3){
 }
 
 
+a.unstyled {
+  color: inherit;
+  &:hover{
+    color: inherit;
+  }
+}
 
 .power-small{
   width: 245px;
@@ -179,7 +185,7 @@ tr.abilities:nth-child(2n+3){
   padding-left: 5px;
   padding-right: 5px;
   line-height: 15px;
-
+  border-radius: 5px;
 
   >.power-row{
     white-space: nowrap;
@@ -332,6 +338,7 @@ tr.abilities:nth-child(odd)>td>div.attr_bonus{
   margin-left: 5px;
   line-height: 1.1em;
   >span{
+    border-radius: 3px;
     font-size: 0.75em;
     margin-top: 2px;
     padding-left: 3px;

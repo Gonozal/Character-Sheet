@@ -50,13 +50,14 @@ class Import < ActiveRecord::Base
   def self.import_powers(char, xml)
     self.powers(xml).collect do |p|
       power = char.powers.new
-      attributes = p.collect do |k, v|
+      attributes = p.collect do |attr|
+        v = attr.last
+        k = attr.first
         v1 = (Array === v)? v.first : v
         if k == "weapon"
           v.collect do |wpn|
             puts wpn
             wpn = wpn.select{|k, v| v.present? and WEAPON_STATS.include? k.to_s}
-            puts wpn
             power.power_weapons.new(wpn)
           end
         elsif HARDCODED_ATTRIBUTES.include? k
@@ -123,7 +124,7 @@ class Import < ActiveRecord::Base
   def self.powers(xml)
     a = []
     power = xml.xpath("//PowerStats/Power").collect do |p|
-      h1 = {"name" => p.attributes["name"].value}
+      h1 = [["name", p.attributes["name"].value]]
 
       children = p.children.select{|c| c.present?}
       h2 = children.collect do |c|
@@ -139,11 +140,10 @@ class Import < ActiveRecord::Base
         else
           [key, c.text.strip]
         end
-      end.compact.group_by(&:first).map{|k,a| [k,a.map(&:last)]}.to_h
+      end.compact
 
-      h1.merge h2
+      h1 + h2
     end
-    puts a.uniq.inspect
     power
   end
 

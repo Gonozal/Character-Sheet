@@ -6,6 +6,6 @@ div.modal.hide id=("feat_#{feat.id}") aria-hidden="true"
   .modal-header
     h3 id=("feat_#{feat.id}Label") = feat.name
   .modal-body
-    p = feat.description
+    p.attr-name = feat.description
   .modal-footer
     button.btn data-dismiss="modal" = "Close"

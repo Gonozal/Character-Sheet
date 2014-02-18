@@ -1,7 +1,6 @@
-div.hide.modal id=("power_#{power.id}") aria-hidden="true"
+div.hide.modal.active id=("power_#{power.id}") aria-hidden="true"
   .modal-header class=(power.power_usage.downcase)
-    h4 id=("power_#{power.id}Label") = power.name
-    em = power.attack_type
+    strong id=("power_#{power.id}Label") = power.name
     em.pull-right = power.action_type.titleize
   .modal-body
     // Power attributes and how they should be dispalyed (mostly to save space)
@@ -13,9 +12,11 @@ div.hide.modal id=("power_#{power.id}") aria-hidden="true"
         p.attr-name
           i.fa.fa-key.offset
           strong = attr.text
-      - elsif ["attack", "target", "targets"].include? attr.name and attr.text.size < 20
-        .target
-          strong = attr.name.titleize + ": "
+      - elsif ["target", "targets"].include? attr.name
+        p.attr-name
+          strong = attr.name.titleize
+        p.attr
+          em = "#{power.attack_type}: "
           = attr.text
       - elsif attr.name == "requirement"
         p.attr-name

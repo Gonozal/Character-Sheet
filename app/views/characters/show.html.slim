@@ -11,7 +11,7 @@
       #feats.row-ish
         .headline = "Feats & Class Features"
         - @character.feats.each do |feat|
-          .feat [href="#feat_#{feat.id}" data-toggle="modal"]
+          a.unstyled.feat [href="#feat_#{feat.id}" data-toggle="modal"]
             .row-ish.name = feat.name
             .row-ish.short = feat.short
     .block#abilities
@@ -21,9 +21,9 @@
     .block#powers
       - @character.powers.each do |p|
         - next if ["Attack", "Basic Attack"].include? p.display
-        .block.power-small [class=(p.power_usage.downcase) href="#power_#{p.id}" data-toggle="modal"]
+        a.unstyled.block.power-small [class=(p.power_usage.downcase) href="#power_#{p.id}" data-toggle="modal"]
           .power-row
-            span.power-name = p.name
+            span.power-name [href="#power_#{p.id}" data-toggle="modal"] = p.name
             em.power-display.pull-right = p.display
           .power-row.details
             span.action-type = p.action_type.titleize

@@ -1,0 +1,19 @@
+.headline
+  strong = "Skills"
+table.table-striped.table-condensed#skills-table
+  - @character.skills.order("name ASC").each do |skill|
+    tr
+      td
+        = skill.name.capitalize
+        - if skill.trained > 0
+          span.fa.fa-check
+      td = skill.value
+      td = skill.stat[0..2]
+
+.headline
+  strong = "Basic Attacks"
+.block#basic-attacks
+  - @character.powers.each do |p|
+    - next unless ["Attack", "Basic Attack"].include? p.display
+    .basic-attack
+      span class = (p.power_usage.downcase) = p.name

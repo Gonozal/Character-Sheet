@@ -1,0 +1,32 @@
+.container
+  .row
+    .block#class-and-name
+      .name = @character.name
+      .class = "Level #{@character.level} #{@character.race} #{@character.klass}"
+    .block#defenses
+      = render 'defenses'
+  .row
+    .block#combat_stats
+      = render 'combat_stats'
+      #feats.row-ish
+        .headline = "Feats & Class Features"
+        - @character.feats.each do |feat|
+          .feat [href="#feat_#{feat.id}" data-toggle="modal"]
+            .row-ish.name = feat.name
+            .row-ish.short = feat.short
+    .block#abilities
+      = render 'abilities'
+    .block#skills
+      = render 'skills'
+    .block#powers
+      - @character.powers.each do |p|
+        - next if ["Attack", "Basic Attack"].include? p.display
+        .block.power-small [class=(p.power_usage.downcase) href="#power_#{p.id}" data-toggle="modal"]
+          .power-row
+            span.power-name = p.name
+            em.power-display.pull-right = p.display
+          .power-row.details
+            span.action-type = p.action_type.titleize
+            span.pull-right.range = p.attack_type
+= render @character.feats
+= render @character.powers

@@ -1,0 +1,347 @@
+// Place all the styles related to the characters controller here.
+// They will automatically be included in application.css.
+// You can use less here
+
+// Sizes
+#combat_stats {
+  width: 135px;
+}
+
+.row-ish {
+  width: 100%;
+  display: table;
+}
+
+#skills {
+  width: 147px;
+}
+
+#skills-table {
+  font-size: 0.7em;
+  line-height: 0.85em;
+  margin-bottom: 5px;
+}
+
+#feats {
+  margin-top: 10px;
+  width: 240px;
+  height: 100px;
+  font-size: 0.6em;
+  line-height: 0.85em;
+  >.feat>.short {
+    font-size: 0.7em;
+    margin-bottom: 2px;
+    margin-left: 5px;
+  }
+}
+
+.defenses>li{
+  padding-left: 1px !important;
+  padding-right: 1px !important;
+  padding-top: 2px;
+}
+
+.modal-body{
+  padding-left: 0px !important;
+  font-size: 0.9em;
+  line-height: 1.2em;
+}
+
+.modal-header{
+  border-bottom: 0px !important;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  padding-bottom: 2px;
+  padding-top: 2px;
+  >h4{
+    margin-top: 2px;
+    margin-bottom: 2px;
+  }
+}
+
+.modal-footer{
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.target {
+  width: 40%;
+  padding-left: 10px;
+  display: inline-block;
+}
+
+p.attr-name {
+  margin: 0px;
+  margin-top: 2px;
+  padding-left: 10px;
+}
+
+p.flavor {
+  background-color: #C8B5A3;
+  margin-top: -15px;
+  width: 100%;
+  padding-right: 5px;
+}
+
+p.attr {
+  padding-left: 15px;
+  margin-bottom: 5px;
+}
+
+p.power-weapon {
+  padding-left: 15px;
+  margin-bottom: 0px;
+  line-height: 1em;
+}
+
+i.offset{
+  padding-right: 5px;
+}
+
+.defense {
+  padding-top: 5px;
+  width: 35px;
+  height: 28px;
+  text-align: center;
+  border-color: black;
+  border-width: 2px;
+  border-style: solid;
+  border-radius: 18px;
+  line-height: 0.9em;
+  vertical-align: middle;
+}
+
+.defense-label {
+  font-size: 0.85em;
+}
+
+
+
+.subtitle {
+  font-size: 0.8em;
+  line-height: 0.9em;
+}
+
+.box {
+  border-style: solid;
+  border-width: 2px;
+  padding-bottom: 3px;
+  padding-left: 3px;
+  padding-right: 3px;
+}
+
+tr.abilities {
+  line-height: 1.15em;
+  >td {
+    margin: 0px;
+    padding: 0px;
+  }
+}
+
+tr.abilities:first-child{
+  border-left: 0px;
+  border-right: 0px;
+  border-bottom: 1px;
+  border-style: solid;
+  border-color: white;
+}
+
+tr.abilities:nth-child(2n+3){
+  border-left: 0px;
+  border-right: 0px;
+  border-bottom: 1px;
+  border-top: 5px;
+  border-style: solid;
+  border-color: white;
+}
+
+
+#class-and-name {
+  width: 155px;
+}
+
+#defenses {
+  width: 180px;
+  margin-left: 2px;
+}
+
+#powers {
+  width: 515px;
+  height: 430px;
+  margin-top: -45px;
+}
+
+
+
+.power-small{
+  width: 245px;
+  margin-top: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  line-height: 15px;
+
+
+  >.power-row{
+    white-space: nowrap;
+    width: 245px;
+    display: table;
+
+    >.power-display{
+      width: 35%;
+      font-size: 0.7em;
+      text-align: right;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+  }
+
+  >.details{
+    line-height: 13px;
+    font-size: 0.7em;
+  }
+}
+
+.power-name {
+  margin-top: 1px;
+  margin-bottom: -1px;
+  float: left;
+  display: inline;
+  width: 65%;
+}
+
+.at-will{
+  background: #00821e;
+  background: -moz-linear-gradient(left,  #00821e 0%, #00821e 55%, #00bf09 100%);
+  background: -webkit-gradient(linear, left top, right top, color-stop(0%,#00821e), color-stop(55%,#00821e), color-stop(100%,#00bf09));
+  background: -webkit-linear-gradient(left,  #00821e 0%,#00821e 55%,#00bf09 100%);
+  background: -o-linear-gradient(left,  #00821e 0%,#00821e 55%,#00bf09 100%);
+  background: -ms-linear-gradient(left,  #00821e 0%,#00821e 55%,#00bf09 100%);
+  background: linear-gradient(to right,  #00821e 0%,#00821e 55%,#00bf09 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00821e', endColorstr='#00bf09',GradientType=1 );
+}
+
+.encounter{
+  background: #bc4f31;
+  background: -moz-linear-gradient(left,  #bc4f31 0%, #bc4f31 55%, #e53222 100%);
+  background: -webkit-gradient(linear, left top, right top, color-stop(0%,#bc4f31), color-stop(55%,#bc4f31), color-stop(100%,#e53222));
+  background: -webkit-linear-gradient(left,  #bc4f31 0%,#bc4f31 55%,#e53222 100%);
+  background: -o-linear-gradient(left,  #bc4f31 0%,#bc4f31 55%,#e53222 100%);
+  background: -ms-linear-gradient(left,  #bc4f31 0%,#bc4f31 55%,#e53222 100%);
+  background: linear-gradient(to right,  #bc4f31 0%,#bc4f31 55%,#e53222 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#bc4f31', endColorstr='#e53222',GradientType=1 );
+}
+
+.daily{
+  background: #7f7f7f;
+  background: -moz-linear-gradient(left,  #7f7f7f 0%, #7f7f7f 55%, #bcbcbc 100%);
+  background: -webkit-gradient(linear, left top, right top, color-stop(0%,#7f7f7f), color-stop(55%,#7f7f7f), color-stop(100%,#bcbcbc));
+  background: -webkit-linear-gradient(left,  #7f7f7f 0%,#7f7f7f 55%,#bcbcbc 100%);
+  background: -o-linear-gradient(left,  #7f7f7f 0%,#7f7f7f 55%,#bcbcbc 100%);
+  background: -ms-linear-gradient(left,  #7f7f7f 0%,#7f7f7f 55%,#bcbcbc 100%);
+  background: linear-gradient(to right,  #7f7f7f 0%,#7f7f7f 55%,#bcbcbc 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7f7f7f', endColorstr='#bcbcbc',GradientType=1 );
+}
+
+.power-small:nth-child(even) {
+  margin-left: 5px;
+}
+.power-small:nth-child(odd) {
+  margin-left: 0px;
+}
+
+
+
+.attr_score {
+  width: 28px;
+}
+
+tr.abilities:nth-child(odd)>td>div.attr_bonus{
+  margin-top: 2px !important;
+}
+
+.attr_bonus {
+  margin-left: -5px;
+  width: 18px;
+}
+
+.double-box {
+  border-style: double;
+  border-width: 4px;
+}
+
+.backshadow {
+  background-color: #656565;
+  color: #FFFFFF;
+}
+
+.headline {
+  border-top-right-radius: 15px;
+  width: 100%
+
+  background: #ffffff; /* Old browsers */
+  background: -moz-linear-gradient(left,  #ffffff 0%, #ffffff 49%, #d8d8d8 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, right top, color-stop(0%,#ffffff), color-stop(49%,#ffffff), color-stop(100%,#d8d8d8)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(left,  #ffffff 0%,#ffffff 49%,#d8d8d8 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(left,  #ffffff 0%,#ffffff 49%,#d8d8d8 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(left,  #ffffff 0%,#ffffff 49%,#d8d8d8 100%); /* IE10+ */
+  background: linear-gradient(to right,  #ffffff 0%,#ffffff 49%,#d8d8d8 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#d8d8d8',GradientType=1 ); /* IE6-9 */
+
+  border-bottom-width: 2px;
+  border-bottom-style: solid;
+  border-bottom-color: #555;
+  margin-bottom: 5px;
+}
+
+.label{
+  vertical-align: middle;
+  height: 80%;
+  width: 75%;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  border-radius: 0px;
+}
+
+.double-box.value {
+  padding: 0;
+  height: 15px;
+  width: 25% - 6px;
+}
+
+#speed-init>.row-ish{
+  margin-top: 3px;
+}
+
+#abilities{
+  width: 100px;
+  >table{
+    line-height: 1em;
+    font-size: 0.9em;
+  }
+}
+
+#basic-attacks{
+  margin-top: -5px;
+  margin-left: 0px;
+  width: 100%;
+}
+
+.basic-attack {
+  margin-left: 5px;
+  line-height: 1.1em;
+  >span{
+    font-size: 0.75em;
+    margin-top: 2px;
+    padding-left: 3px;
+    display: inline-block;
+    width: 140px;
+  }
+}
+
+.block {
+  float: left;
+  min-height: 1px;
+  margin-left: 10px;
+}

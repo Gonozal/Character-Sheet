@@ -1,0 +1,11 @@
+/ = modal_dialog id: "feat_#{feat.id}",
+/   header: {show_close: false, dismiss: "modal", title: feat.name},
+/   body: feat.description,
+/   footer: content_tag(:button, "Close", class: "btn", data: {dismiss: "modal"})
+div.modal.hide id=("feat_#{feat.id}") aria-hidden="true"
+  .modal-header
+    h3 id=("feat_#{feat.id}Label") = feat.name
+  .modal-body
+    p = feat.description
+  .modal-footer
+    button.btn data-dismiss="modal" = "Close"

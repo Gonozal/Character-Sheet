@@ -1,0 +1,28 @@
+.headline
+  strong = "Hit Points"
+#hp
+  .box
+    strong = "HP"
+    span.pull-right
+      strong.hp = @character.current_hp
+      span.hp = "(+"
+      span.hp = @character.temp_hp
+      span.hp = ")"
+      strong.hp = "/#{@character.hit_points}"
+    .subtitle = "(Bloodied #{@character.hit_points / 2})"
+#surges.row-ish
+  .text-center.row-ish
+    strong = "Healing Surges"
+    span.pull-left
+      .subtitle.text-center = "Surge Value"
+      .text-center.double-box = @character.hit_points / 4
+    span.pull-right
+      .subtitle.text-center = "Surges/Day"
+      .text-center.double-box = @character.healing_surges
+#speed-init.row-ish
+  .row-ish
+    span.label.backshadow = "Initiative"
+    span.value.double-box.text-center.pull-right = @character.initiative
+  .row-ish
+    span.label.backshadow = "Speed"
+    span.value.double-box.text-center.pull-right = @character.speed

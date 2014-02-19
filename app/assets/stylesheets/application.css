@@ -10,5 +10,6 @@
  *
  *= require_self
  *= require bootstrap_and_overrides
+ *= require jquery.qtip.css
  *= require_tree .
  */

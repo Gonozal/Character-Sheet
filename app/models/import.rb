@@ -58,7 +58,6 @@ class Import < ActiveRecord::Base
           puts v.inspect
           next if String === v
           wpn = v.select{|k, v| v.present? and WEAPON_STATS.include? k.to_s}
-          puts wpn.inspect
           power.power_weapons.new(wpn)
         elsif HARDCODED_ATTRIBUTES.include? k
           power.send((k + "=").to_sym, v1)

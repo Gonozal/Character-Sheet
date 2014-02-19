@@ -1,34 +1,37 @@
-.hidden
-  - power.power_attributes.each do |attr|
-    - if attr.name == "flavor"
-      p.attr-name.flavor
-        em.flavor = attr.text
-    - elsif attr.name == "keywords"
+- if power.flavor.present?
+    p.attr-name.flavor
+      em.flavor = attr.text
+p.attr-name
+  i.fa [class="#{power.action_type_symbol}"]
+  strong = " #{power.action_type.titleize}"
+- power.power_attributes.each do |attr|
+  - if attr.name == "keywords"
+    - if attr.text.present?
       p.attr-name
         i.fa.fa-key.offset
         strong = attr.text
-    - elsif ["target", "targets"].include? attr.name
-      p.attr-name
-        strong = attr.name.titleize
-      p.attr
-        em = "#{power.attack_type}: "
-        = attr.text
-    - elsif attr.name == "requirement"
-      p.attr-name
-        i.fa.fa-exclamation-triangle.offset
-        em = attr.text
-    - elsif attr.name == "power_type"
-      - next;
-    - else
-      p.attr-name
-        strong = attr.name.titleize
-      p.attr = attr.text.gsub("\n", "<br />").html_safe
-
-  - if power.power_weapons.any?
+  - elsif ["target", "targets"].include? attr.name
     p.attr-name
-      strong Weapons
-    - power.power_weapons.each do |w|
-      p.power-weapon
-        = w.name + ":"
-        em.muted
-          = " #{w.attack_bonus} vs. #{w.defense}#{w.damage_string}"
+      strong = attr.name.titleize
+    p.attr
+      em = "#{power.attack_type}: "
+      = attr.text
+  - elsif attr.name == "requirement"
+    p.attr-name
+      i.fa.fa-exclamation-triangle.offset
+      em = attr.text
+  - elsif attr.name == "power_type"
+    - next;
+  - else
+    p.attr-name
+      strong = attr.name.titleize
+    p.attr = attr.text.gsub("\n", "<br />").html_safe
+
+- if power.power_weapons.any?
+  p.attr-name
+    strong Weapons
+  - power.power_weapons.each do |w|
+    p.power-weapon
+      = w.name + ":"
+      em.muted
+        = " #{w.attack_bonus} vs. #{w.defense}#{w.damage_string}"

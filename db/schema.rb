@@ -87,9 +87,10 @@ ActiveRecord::Schema.define(version: 20140218122229) do
     t.string   "name"
     t.integer  "attack_bonus"
     t.string   "damage"
-    t.string   "damage_type",    default: "untyped"
+    t.string   "damage_type",       default: "untyped"
     t.string   "defense"
     t.string   "hit_components"
+    t.string   "damage_components"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -102,6 +103,7 @@ ActiveRecord::Schema.define(version: 20140218122229) do
     t.string   "action_type"
     t.string   "attack_type"
     t.string   "power_usage"
+    t.text     "flavor"
     t.boolean  "child",        default: false
     t.datetime "created_at"
     t.datetime "updated_at"

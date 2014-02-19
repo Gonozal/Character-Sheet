@@ -114,9 +114,18 @@ p.attr-name {
   max-height: 620px;
 }
 
+.qtip-content {
+  padding-left: 0px !important;
+  padding-top: 0px !important;
+}
+
+.qtip-bootstrap {
+  padding: 0px !important;
+}
+
 p.flavor {
+  margin-top: -1px;
   background-color: #C8B5A3;
-  margin-top: -16px;
   width: 100%;
   padding-right: 5px;
   padding-top: 4px;
@@ -258,8 +267,11 @@ a.unstyled {
   color: #000 !important;
 }
 
+.qtip-titlebar{
+  border-bottom: 0px !important;
+}
 
-.at-will-bg{
+.qtip-at-will>.qtip-titlebar{
   background: #00821e;
   background: -moz-linear-gradient(left,  #00821e 0%, #00821e 55%, #00bf09 100%);
   background: -webkit-gradient(linear, left top, right top, color-stop(0%,#00821e), color-stop(55%,#00821e), color-stop(100%,#00bf09));
@@ -270,7 +282,7 @@ a.unstyled {
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00821e', endColorstr='#00bf09',GradientType=1 );
 }
 
-.encounter-bg{
+.qtip-encounter>.qtip-titlebar{
   background: #bc4f31;
   background: -moz-linear-gradient(left,  #bc4f31 0%, #bc4f31 55%, #e53222 100%);
   background: -webkit-gradient(linear, left top, right top, color-stop(0%,#bc4f31), color-stop(55%,#bc4f31), color-stop(100%,#e53222));
@@ -281,7 +293,7 @@ a.unstyled {
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#bc4f31', endColorstr='#e53222',GradientType=1 );
 }
 
-.daily-bg{
+.qtip-daily>.qtip-titlebar{
   background: #7f7f7f;
   background: -moz-linear-gradient(left,  #7f7f7f 0%, #7f7f7f 55%, #bcbcbc 100%);
   background: -webkit-gradient(linear, left top, right top, color-stop(0%,#7f7f7f), color-stop(55%,#7f7f7f), color-stop(100%,#bcbcbc));

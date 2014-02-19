@@ -1,8 +1,10 @@
 - @character.powers.each do |p|
+  - popover_text = render(p).gsub(/"/, "'")
   - next if ["Attack", "Basic Attack"].include? p.display
-  a.unstyled.block.power-small [class=(p.power_usage.downcase) href="#power_#{p.id}" data-toggle="modal"]
+  a.unstyled.block.power-small[class=(p.power_usage.downcase)
+    data-title=p.name data-content=popover_text data-class=(p.power_usage.downcase)]
     .power-row
-      span.power-name = p.name
+      span.power-name [href="#power_#{p.id}" data-toggle="modal"] = p.name
       em.power-display.pull-right = p.display
     .power-row.details
       span.action-type = p.action_type.titleize

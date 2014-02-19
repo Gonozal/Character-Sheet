@@ -1,0 +1,9 @@
+- @character.powers.each do |p|
+  - next if ["Attack", "Basic Attack"].include? p.display
+  a.unstyled.block.power-small [class=(p.power_usage.downcase) href="#power_#{p.id}" data-toggle="modal"]
+    .power-row
+      span.power-name = p.name
+      em.power-display.pull-right = p.display
+    .power-row.details
+      span.action-type = p.action_type.titleize
+      span.pull-right.range = p.attack_type

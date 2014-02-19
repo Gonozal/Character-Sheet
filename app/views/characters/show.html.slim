@@ -9,25 +9,12 @@
     .block#combat_stats
       = render 'combat_stats'
       #feats.row-ish
-        .headline = "Feats & Class Features"
-        dl.feats
-          - @character.feats.each do |feat|
-            a.unstyled.feat [href="#feat_#{feat.id}" data-toggle="modal"]
-              dt.row-ish.name = feat.name
-              dd.row-ish.short = feat.short
+        = render 'feats'
     .block#abilities
       = render 'abilities'
     .block#skills
       = render 'skills'
     .block#powers
-      - @character.powers.each do |p|
-        - next if ["Attack", "Basic Attack"].include? p.display
-        a.unstyled.block.power-small [class=(p.power_usage.downcase) href="#power_#{p.id}" data-toggle="modal"]
-          .power-row
-            span.power-name [href="#power_#{p.id}" data-toggle="modal"] = p.name
-            em.power-display.pull-right = p.display
-          .power-row.details
-            span.action-type = p.action_type.titleize
-            span.pull-right.range = p.attack_type
+      = render 'powers'
 = render @character.feats
 = render @character.powers

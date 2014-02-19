@@ -1,5 +1,5 @@
 div.hide.modal.active id=("power_#{power.id}") aria-hidden="true"
-  .modal-header class=(power.power_usage.downcase)
+  .modal-header class="#{(power.power_usage.downcase)}-bg"
     strong id=("power_#{power.id}Label") = power.name
     em.pull-right = power.action_type.titleize
   .modal-body

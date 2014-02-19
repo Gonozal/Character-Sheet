@@ -1,10 +1,10 @@
 .headline
   strong = "Abilitites"
-table.table-striped.table-condensed#abilities
+table.table-striped.table-condensed
   - ABILITY_SCORES.each do |ability|
     tr.abilities
       td = ability[0..2]
       td
-        .text-center.attr_score.double-box = @character.send(ability.downcase.to_sym)
+        .text-center.attr-score.double-box = @character.send(ability.downcase.to_sym)
       td.attr-container
-        .text-center.attr_bonus.box = (@character.send(ability.downcase.to_sym) - 10 ) / 2
+        .text-center.attr-bonus = @character.ability_modifier(ability)

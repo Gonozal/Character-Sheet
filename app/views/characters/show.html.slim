@@ -1,19 +1,20 @@
-.container
-  .row
+#charsheet
+  .row-ish
     .block#class-and-name
       .name = @character.name
       .class = "Level #{@character.level} #{@character.race} #{@character.klass}"
     .block#defenses
       = render 'defenses'
-  .row
+  .row-ish
     .block#combat_stats
       = render 'combat_stats'
       #feats.row-ish
         .headline = "Feats & Class Features"
-        - @character.feats.each do |feat|
-          a.unstyled.feat [href="#feat_#{feat.id}" data-toggle="modal"]
-            .row-ish.name = feat.name
-            .row-ish.short = feat.short
+        dl.feats
+          - @character.feats.each do |feat|
+            a.unstyled.feat [href="#feat_#{feat.id}" data-toggle="modal"]
+              dt.row-ish.name = feat.name
+              dd.row-ish.short = feat.short
     .block#abilities
       = render 'abilities'
     .block#skills

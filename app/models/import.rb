@@ -8,7 +8,7 @@ class Import < ActiveRecord::Base
     xml
   end
 
-  def self.import(path = "lib/assets/MaraL5Detail.dnd4e")
+  def self.import(path = "lib/assets/hava_lvl12Detail.dnd4e")
     xml = Import.path(path)
     # Import char and save it so we can reference powers and skills to it
     c = Import.import_character(xml)
@@ -55,11 +55,11 @@ class Import < ActiveRecord::Base
         k = attr.first
         v1 = (Array === v)? v.first : v
         if k == "weapon"
-          v.collect do |wpn|
-            puts wpn
-            wpn = wpn.select{|k, v| v.present? and WEAPON_STATS.include? k.to_s}
-            power.power_weapons.new(wpn)
-          end
+          puts v.inspect
+          next if String === v
+          wpn = v.select{|k, v| v.present? and WEAPON_STATS.include? k.to_s}
+          puts wpn.inspect
+          power.power_weapons.new(wpn)
         elsif HARDCODED_ATTRIBUTES.include? k
           power.send((k + "=").to_sym, v1)
           nil

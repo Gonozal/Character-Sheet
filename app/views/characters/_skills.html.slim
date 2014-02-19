@@ -5,9 +5,12 @@ table.table-striped.table-condensed#skills-table
     tr
       td
         = skill.name.capitalize
-        - if skill.trained > 0
-          span.fa.fa-check
-      td = skill.value
+      td.checkmark
+        - if skill.trained > 0 
+          | ✓
+        - else
+         |  
+      td.skill-value = skill.value
       td = skill.stat[0..2]
 
 .headline

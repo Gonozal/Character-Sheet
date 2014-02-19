@@ -2,6 +2,20 @@
 // They will automatically be included in application.css.
 // You can use less here
 
+html {
+  width: 700px;
+  padding: 0px;
+  margin: 0px;
+}
+
+body {
+  padding: 0px;
+  margin: 0px;
+}
+
+#charsheet{
+  width: 700px;
+}
 // Sizes
 #combat_stats {
   width: 135px;
@@ -22,15 +36,35 @@
   margin-bottom: 5px;
 }
 
+td.checkmark{
+  padding-left: 1px;
+  padding-right: 1px;
+}
+
+.skill-value {
+  text-align: right;
+}
+
+.feats {
+  font-size: 0.8em;
+  line-height: 0.95em;
+}
+
+
+dt.name{
+  line-height: 13px;
+}
+dd.short{
+  line-height: 12px;
+}
+
 #feats {
   margin-top: 10px;
   width: 240px;
   height: 100px;
-  font-size: 0.6em;
-  line-height: 0.85em;
-  >.feat>.short {
-    font-size: 0.7em;
-    margin-bottom: 2px;
+  >.feats>.feat>.short {
+    font-size: 0.9em;
+    margin-bottom: 6px;
     margin-left: 5px;
   }
 }
@@ -72,8 +106,13 @@
 
 p.attr-name {
   margin: 0px;
-  margin-top: 2px;
+  margin-top: 5px;
   padding-left: 10px;
+}
+
+.modal-body {
+  max-height: 720px;
+  height: 620px;
 }
 
 p.flavor {
@@ -81,11 +120,12 @@ p.flavor {
   margin-top: -16px;
   width: 100%;
   padding-right: 5px;
+  padding-top: 4px;
+  padding-bottom: 4px;
 }
 
 p.attr {
   padding-left: 15px;
-  margin-bottom: 5px;
 }
 
 p.power-weapon {
@@ -103,11 +143,7 @@ i.offset{
   width: 35px;
   height: 28px;
   text-align: center;
-  border-color: black;
-  border-width: 2px;
-  border-style: solid;
-  border-radius: 18px;
-  line-height: 0.9em;
+  line-height: 1em;
   vertical-align: middle;
 }
 
@@ -118,16 +154,8 @@ i.offset{
 
 
 .subtitle {
-  font-size: 0.8em;
+  font-size: 0.7em;
   line-height: 0.9em;
-}
-
-.box {
-  border-style: solid;
-  border-width: 2px;
-  padding-bottom: 3px;
-  padding-left: 3px;
-  padding-right: 3px;
 }
 
 tr.abilities {
@@ -141,7 +169,7 @@ tr.abilities {
 tr.abilities:first-child{
   border-left: 0px;
   border-right: 0px;
-  border-bottom: 1px;
+  border-bottom: 2px;
   border-style: solid;
   border-color: white;
 }
@@ -149,8 +177,8 @@ tr.abilities:first-child{
 tr.abilities:nth-child(2n+3){
   border-left: 0px;
   border-right: 0px;
-  border-bottom: 1px;
-  border-top: 5px;
+  border-bottom: 2px;
+  border-top: 9px;
   border-style: solid;
   border-color: white;
 }
@@ -166,9 +194,9 @@ tr.abilities:nth-child(2n+3){
 }
 
 #powers {
-  width: 515px;
-  height: 430px;
-  margin-top: -45px;
+  width: 260px;
+  margin-top: -47px;
+  font-size: 1.1em;
 }
 
 
@@ -180,7 +208,7 @@ a.unstyled {
 }
 
 .power-small{
-  width: 245px;
+  width: 260px;
   margin-top: 5px;
   padding-left: 5px;
   padding-right: 5px;
@@ -189,7 +217,7 @@ a.unstyled {
 
   >.power-row{
     white-space: nowrap;
-    width: 245px;
+    width: 100%;
     display: table;
 
     >.power-display{
@@ -211,12 +239,28 @@ a.unstyled {
 .power-name {
   margin-top: 1px;
   margin-bottom: -1px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
   float: left;
   display: inline;
   width: 65%;
 }
 
 .at-will{
+  color: #008800 !important;
+}
+
+.encounter{
+  color: #FF1919 !important;
+}
+
+.daily{
+  color: #000 !important;
+}
+
+
+.at-will-bg{
   background: #00821e;
   background: -moz-linear-gradient(left,  #00821e 0%, #00821e 55%, #00bf09 100%);
   background: -webkit-gradient(linear, left top, right top, color-stop(0%,#00821e), color-stop(55%,#00821e), color-stop(100%,#00bf09));
@@ -227,7 +271,7 @@ a.unstyled {
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00821e', endColorstr='#00bf09',GradientType=1 );
 }
 
-.encounter{
+.encounter-bg{
   background: #bc4f31;
   background: -moz-linear-gradient(left,  #bc4f31 0%, #bc4f31 55%, #e53222 100%);
   background: -webkit-gradient(linear, left top, right top, color-stop(0%,#bc4f31), color-stop(55%,#bc4f31), color-stop(100%,#e53222));
@@ -238,7 +282,7 @@ a.unstyled {
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#bc4f31', endColorstr='#e53222',GradientType=1 );
 }
 
-.daily{
+.daily-bg{
   background: #7f7f7f;
   background: -moz-linear-gradient(left,  #7f7f7f 0%, #7f7f7f 55%, #bcbcbc 100%);
   background: -webkit-gradient(linear, left top, right top, color-stop(0%,#7f7f7f), color-stop(55%,#7f7f7f), color-stop(100%,#bcbcbc));
@@ -250,7 +294,7 @@ a.unstyled {
 }
 
 .power-small:nth-child(even) {
-  margin-left: 5px;
+  margin-left: 0px;
 }
 .power-small:nth-child(odd) {
   margin-left: 0px;
@@ -258,27 +302,38 @@ a.unstyled {
 
 
 
-.attr_score {
+.attr-score {
   width: 28px;
 }
 
-tr.abilities:nth-child(odd)>td>div.attr_bonus{
-  margin-top: 2px !important;
-}
-
-.attr_bonus {
+.attr-bonus {
   margin-left: -5px;
   width: 18px;
+  height: 100%;
+  text-align: right;
+  font-weight: 800;
+  padding: 2px;
 }
 
 .double-box {
-  border-style: double;
-  border-width: 4px;
+}
+
+.surges {
+  padding-top: 8px;
+  display: block;
+}
+
+.surge-value {
+  font-size: 0.9em;
 }
 
 .backshadow {
   background-color: #656565;
   color: #FFFFFF;
+}
+
+.name {
+  font-weight: 500;
 }
 
 .headline {
@@ -317,15 +372,28 @@ tr.abilities:nth-child(odd)>td>div.attr_bonus{
 }
 
 #speed-init>.row-ish{
-  margin-top: 3px;
+  margin-top: 2px;
 }
 
 #abilities{
-  width: 100px;
   >table{
+    margin-top: -2px;
+    width: 100px;
     line-height: 1em;
     font-size: 0.9em;
   }
+}
+
+#hp {
+  height: 34px;
+}
+
+.box {
+  height: 100%;
+  border-style: solid;
+  border-width: 2px;
+  padding-left: 3px;
+  padding-right: 3px;
 }
 
 #basic-attacks{
@@ -335,12 +403,13 @@ tr.abilities:nth-child(odd)>td>div.attr_bonus{
 }
 
 .basic-attack {
+  height: 14px;
+  line-height: 14px;
+
   margin-left: 5px;
-  line-height: 1.1em;
   >span{
     border-radius: 3px;
     font-size: 0.75em;
-    margin-top: 2px;
     padding-left: 3px;
     display: inline-block;
     width: 140px;

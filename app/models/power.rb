@@ -3,14 +3,32 @@ class Power < ActiveRecord::Base
   has_many :power_weapons
   has_many :power_attributes
 
+  ORDERED = ['At-Will', 'Encounter', 'Daily']
+
+  # Returns a case statement for ordering by a particular set of strings
+  # Note that the SQL is built by hand and therefore injection is possible,
+  # however since we're declaring the priorities in a constant above it's
+  # safe.
+  def self.order_by_case
+    ret = "CASE"
+    ORDERED.each_with_index do |p, i|
+      ret << " WHEN power_usage = '#{p}' THEN #{i}"
+    end
+    ret << " END"
+  end
+
   default_scope {
-    order('power_usage, display').
+    order(order_by_case).order(:name).
     includes([:power_weapons, :power_attributes])
   }
 
   def attack_type
     a = read_attribute(:attack_type)
-    (a.present?)? a.titleize.sub("Area Burst", "AB").sub(" Squares", "") : "---"
+    if a.present?
+      a.titleize.sub("Area Burst", "AB").sub(" Squares", "")
+    else
+      " "
+    end
   end
 
   def full_attack_type

@@ -1,42 +1,34 @@
-div.hide.modal.active id=("power_#{power.id}") aria-hidden="true"
-  .modal-header class="#{(power.power_usage.downcase)}-bg"
-    strong id=("power_#{power.id}Label") = power.name
-    em.pull-right = power.action_type.titleize
-  .modal-body
-    // Power attributes and how they should be dispalyed (mostly to save space)
-    - power.power_attributes.each do |attr|
-      - if attr.name == "flavor"
-        p.attr-name.flavor
-          em.flavor = attr.text
-      - elsif attr.name == "keywords"
-        p.attr-name
-          i.fa.fa-key.offset
-          strong = attr.text
-      - elsif ["target", "targets"].include? attr.name
-        p.attr-name
-          strong = attr.name.titleize
-        p.attr
-          em = "#{power.attack_type}: "
-          = attr.text
-      - elsif attr.name == "requirement"
-        p.attr-name
-          i.fa.fa-exclamation-triangle.offset
-          em = attr.text
-      - elsif attr.name == "power_type"
-        - next;
-      - else
-        p.attr-name
-          strong = attr.name.titleize
-        p.attr = attr.text.gsub("\n", "<br />").html_safe
-
-    - if power.power_weapons.any?
+.hidden
+  - power.power_attributes.each do |attr|
+    - if attr.name == "flavor"
+      p.attr-name.flavor
+        em.flavor = attr.text
+    - elsif attr.name == "keywords"
       p.attr-name
-        strong Weapons
-      - power.power_weapons.each do |w|
-        p.power-weapon
-          = w.name + ":"
-          em.muted
-            = " #{w.attack_bonus} vs. #{w.defense}#{w.damage_string}"
+        i.fa.fa-key.offset
+        strong = attr.text
+    - elsif ["target", "targets"].include? attr.name
+      p.attr-name
+        strong = attr.name.titleize
+      p.attr
+        em = "#{power.attack_type}: "
+        = attr.text
+    - elsif attr.name == "requirement"
+      p.attr-name
+        i.fa.fa-exclamation-triangle.offset
+        em = attr.text
+    - elsif attr.name == "power_type"
+      - next;
+    - else
+      p.attr-name
+        strong = attr.name.titleize
+      p.attr = attr.text.gsub("\n", "<br />").html_safe
 
-  .modal-footer
-    button.btn data-dismiss="modal" = "Close"
+  - if power.power_weapons.any?
+    p.attr-name
+      strong Weapons
+    - power.power_weapons.each do |w|
+      p.power-weapon
+        = w.name + ":"
+        em.muted
+          = " #{w.attack_bonus} vs. #{w.defense}#{w.damage_string}"

@@ -21,6 +21,7 @@ gem 'slim'
 
 # Bootstrap for navigation and misc JS stuff
 gem "twitter-bootstrap-rails", github: "seyhunak/twitter-bootstrap-rails"
+# more flexible popovers / tooltips
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 gem 'therubyracer', platforms: :ruby

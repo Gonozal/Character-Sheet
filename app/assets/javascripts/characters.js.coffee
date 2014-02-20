@@ -3,6 +3,15 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 jQuery ->
+  $('body').on 'touchmove', (event) ->
+    event.preventDefault()
+  $('#feats').on 'touchmove', (event) ->
+    event.stopPropagation()
+
+  window.onresize = ->
+    $('#feats > .feats').height(window.innerHeight - 260)
+  window.onresize()
+
   FastClick.attach(document.body)
   $('.power-small').qtip
     content:
@@ -10,8 +19,13 @@ jQuery ->
         $(this).next().html()
       title: ->
         $(this).attr('data-title')
-    show: 'click',
-    hide: 'unfocus'
+    show:
+      event: 'click'
+      delay: 0
+      effect: false
+    hide:
+      event: 'unfocus'
+      effect: false
     style:
       width: "405px"
       classes: 'qtip-bootstrap'
@@ -26,7 +40,9 @@ jQuery ->
     events:
       show: (events, api) ->
         target = api.elements.target
-        target.addClass('active')
+        setTimeout(->
+          target.addClass('active')
+        , 0)
       hide: (events, api) ->
         target = api.elements.target
         target.removeClass('active')
@@ -34,3 +50,6 @@ jQuery ->
         tooltip = api.elements.tooltip
         target = api.elements.target
         tooltip.addClass("qtip-" + $(target).attr('data-class'))
+  $('#powers').on "click", '.power-small.active', (event) ->
+    $(this).qtip().hide()
+    console.log "click..?"

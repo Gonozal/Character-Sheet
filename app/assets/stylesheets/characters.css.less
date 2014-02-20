@@ -20,6 +20,10 @@ body {
   margin: 0px;
 }
 
+html, body {
+  height: 100%;
+}
+
 #charsheet{
   width: 700px;
 }
@@ -68,11 +72,15 @@ dd.short{
 #feats {
   margin-top: 10px;
   width: 240px;
-  height: 100px;
-  >.feats>.feat>.short {
-    font-size: 0.9em;
-    margin-bottom: 6px;
-    margin-left: 5px;
+  >.feats {
+    overflow-y: auto;
+    overflow-x: hidden;
+    margin-bottom: 0;
+    >.feat>.short {
+      font-size: 0.9em;
+      margin-bottom: 6px;
+      margin-left: 5px;
+    }
   }
 }
 
@@ -209,7 +217,7 @@ tr.abilities:nth-child(2n+3){
 #powers {
   width: 260px;
   margin-top: -47px;
-  font-size: 14px;
+  font-size: 13px;
 }
 
 
@@ -282,9 +290,6 @@ a.unstyled {
 }
 
 .power-name {
-  margin-top: 1px;
-  margin-bottom: -1px;
-  overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
   float: left;

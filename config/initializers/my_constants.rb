@@ -56,7 +56,9 @@ HARDCODED_ATTRIBUTES = [
   "attack_type",
   "power_usage",
   "child",
-  "flavor"
+  "flavor",
+  "keywords",
+  "requirement"
 ]
 
 WEAPON_STATS = PowerWeapon.attribute_names

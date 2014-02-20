@@ -39,8 +39,8 @@ class Power < ActiveRecord::Base
     case action_type.titleize
     when "Standard Action"
       "fa-star"
-    when "Movement Action"
-      "fa-star-half-o"
+    when "Move Action"
+      "fa-arrows"
     when "Minor Action"
       "fa-sun-o"
     when "Free Action"

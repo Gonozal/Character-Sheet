@@ -57,29 +57,29 @@ class Power < ActiveRecord::Base
   def attack_type_symbol
     case full_attack_type.titleize
     when /Area Burst.*/
-      # atk_area_burst
+      "atk-area-burst"
     when /Area Wall.*/
-      # atk_area_wall
+      "atk-area-wall"
     when /Area Blast.*/
-      # atk_area_blast
+      "atk-area-blast"
     when /Close Burst.*/
-      # atk_close_burst
+      "atk-close-burst"
     when /Close Blast.*/
-      # atk_close_blast
+      "atk-close-blast"
     when /Close Wall.*/
-      # atk_close_wall
+      "atk-close-wal"
     when /Melee or Ranged Weapon*/
-      # atk_hybrid
+      "atk-hybrid"
     when /Ranged Weapon.*/
-      # atk_ranged
+      "atk-ranged-weapon"
     when /Ranged.*/
-      # atk_ranged_sight
+      "atk-ranged"
     when /Melee Weapon.*/
-      # atk_melee
+      "atk-melee-weapon"
     when /(Melee Touch)|(Melee).*/
-      # atk_touch
+      "atk-touch"
     when /Self|Personal.*/
-      # atk_personal
+      "atk-personal"
     end
   end
 

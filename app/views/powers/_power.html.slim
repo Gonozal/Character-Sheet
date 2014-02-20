@@ -2,22 +2,19 @@
   - if power.flavor.present?
       p.attr-name.flavor
         em.flavor = power.flavor
+  - if power.requirement.present?
+    p.attr-name
+      i.fa.fa-exclamation-triangle.offset
+      em = power.requirement
+  - if power.keywords.present?
+    p.attr-name.pull-right
+      i.fa.fa-key.offset
+      = power.keywords.titleize
   p.attr-name
     i.fa [class="#{power.action_type_symbol}"]
     strong = " #{power.action_type.titleize}"
   - power.power_attributes.each do |attr|
-    - if attr.name == "keywords"
-      - if attr.text.present?
-        p.attr-name
-          strong = attr.name.titleize
-        p.attr
-          em = "#{power.attack_type}: "
-          = attr.text
-    - elsif attr.name == "requirement"
-      p.attr-name
-        i.fa.fa-exclamation-triangle.offset
-        em = attr.text
-    - elsif attr.name == "power_type"
+    - if attr.name == "power_type"
       - next;
     - else
       p.attr-name

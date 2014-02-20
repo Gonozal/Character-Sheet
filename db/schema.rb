@@ -104,6 +104,8 @@ ActiveRecord::Schema.define(version: 20140218122229) do
     t.string   "attack_type"
     t.string   "power_usage"
     t.text     "flavor"
+    t.text     "requirement"
+    t.text     "keywords"
     t.boolean  "child",        default: false
     t.datetime "created_at"
     t.datetime "updated_at"

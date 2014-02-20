@@ -10,6 +10,8 @@ class CreatePowers < ActiveRecord::Migration
       t.string :attack_type
       t.string :power_usage
       t.text :flavor
+      t.text :requirement
+      t.text :keywords
 
       t.boolean :child, default: false
 

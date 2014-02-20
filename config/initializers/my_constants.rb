@@ -46,17 +46,6 @@ ADDITIONAL_DETAILS = [
   "Class"
 ]
 
-POWER_ATTRIBUTES = [
-  "flavor",
-  "display",
-  "name",
-  "level",
-  "action_type",
-  "attack_type",
-  "power_type",
-  "flavor"
-]
-
 FEATS = ["Feat", "Class Feature"]
 
 HARDCODED_ATTRIBUTES = [
@@ -66,7 +55,8 @@ HARDCODED_ATTRIBUTES = [
   "action_type",
   "attack_type",
   "power_usage",
-  "child"
+  "child",
+  "flavor"
 ]
 
 WEAPON_STATS = PowerWeapon.attribute_names

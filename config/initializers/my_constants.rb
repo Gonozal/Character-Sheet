@@ -54,6 +54,7 @@ POWER_ATTRIBUTES = [
   "action_type",
   "attack_type",
   "power_type",
+  "flavor"
 ]
 
 FEATS = ["Feat", "Class Feature"]

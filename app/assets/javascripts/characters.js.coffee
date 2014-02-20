@@ -13,7 +13,7 @@ jQuery ->
     show: 'click',
     hide: 'unfocus'
     style:
-      width: "400px"
+      width: "405px"
       classes: 'qtip-bootstrap'
     position:
       my: "right center"

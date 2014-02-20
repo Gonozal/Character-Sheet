@@ -34,4 +34,23 @@ class Power < ActiveRecord::Base
   def full_attack_type
     read_attribute(:attack_type)
   end
+
+  def action_type_symbol
+    case action_type.titleize
+    when "Standard Action"
+      "fa-star"
+    when "Movement Action"
+      "fa-star-half-o"
+    when "Minor Action"
+      "fa-sun-o"
+    when "Free Action"
+      "fa-star-o"
+    when "Immediate Interrupt"
+      "fa-fighter-jet"
+    when "Immediate Reaction"
+      "fa-fighter-jet"
+    else
+      ""
+    end
+  end
 end

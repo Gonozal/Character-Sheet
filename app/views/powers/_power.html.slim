@@ -1,12 +1,16 @@
 .hidden
-  - power.power_attributes.each do |attr|
-    - if attr.name == "flavor"
+  - if power.flavor.present?
       p.attr-name.flavor
         em.flavor = attr.text
-    - elsif attr.name == "keywords"
-      p.attr-name
-        i.fa.fa-key.offset
-        strong = attr.text
+  p.attr-name
+    i.fa [class="#{power.action_type_symbol}"]
+    strong = " #{power.action_type.titleize}"
+  - power.power_attributes.each do |attr|
+    - if attr.name == "keywords"
+      - if attr.text.present?
+        p.attr-name
+          i.fa.fa-key.offset
+          strong = attr.text
     - elsif ["target", "targets"].include? attr.name
       p.attr-name
         strong = attr.name.titleize

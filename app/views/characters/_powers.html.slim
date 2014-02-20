@@ -1,0 +1,11 @@
+- @character.powers.each do |p|
+  - next if ["Attack", "Basic Attack"].include? p.display
+  .power-small[class=(p.power_usage.downcase)
+    data-title=p.name data-class=(p.power_usage.downcase)]
+    .power-row
+      span.power-name [href="#power_#{p.id}" data-toggle="modal"] = p.name
+      em.power-display.pull-right = p.display
+    .power-row.details
+      span.action-type = p.action_type.titleize
+      span.pull-right.range = p.attack_type
+  = render(p)

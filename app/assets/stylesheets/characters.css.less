@@ -90,6 +90,7 @@ dd.short{
 }
 .qtip-content{
   padding-left: 0px !important;
+  padding-top: 0px !important;
   font-size: 0.9em;
   line-height: 1.2em;
 }
@@ -100,6 +101,7 @@ dd.short{
   border-top-left-radius: 5px;
   padding-bottom: 4px;
   padding-top: 4px;
+  
   >h4{
     margin-top: 2px;
     margin-bottom: 2px;
@@ -116,6 +118,14 @@ p.attr-name {
   margin: 0px;
   margin-top: 5px;
   padding-left: 10px;
+}
+
+.modal-body {
+  max-height: 620px;
+}
+
+.qtip-bootstrap {
+  padding: 0px !important;
 }
 
 p.flavor {
@@ -306,6 +316,9 @@ a.unstyled {
 .daily-bg{
   background: @at-will-color;
   #gradient > .horizontal(@daily-color; lighten(@daily-color, 33%));
+}
+.qtip-titlebar{
+  border-bottom: 0px !important;
 }
 
 .attr-score {

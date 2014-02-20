@@ -1,0 +1,6 @@
+.headline = "Feats & Class Features"
+dl.feats
+  - @character.feats.each do |feat|
+    a.unstyled.feat [href="#feat_#{feat.id}" data-toggle="modal"]
+      dt.row-ish.name = feat.name
+      dd.row-ish.short = feat.short

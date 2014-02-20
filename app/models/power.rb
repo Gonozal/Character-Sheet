@@ -17,11 +17,28 @@ class Power < ActiveRecord::Base
     ret << " END"
   end
 
+  def increase_usage
+    self.used += 1 if used < uses
+  end
+
+  def decrease_usage
+    self.used -= 1 if used > 0
+  end
+
+  def available_class
+    (available?)? "" : "used"
+  end
+
+  def available?
+    used < uses or power_usage.downcase == "at-will"
+  end
+
   default_scope {
     order(order_by_case).order(:name).
     includes([:power_weapons, :power_attributes])
   }
 
+  # Make standard attack type shorter, should probably be changed
   def attack_type
     a = read_attribute(:attack_type)
     if a.present?
@@ -31,10 +48,12 @@ class Power < ActiveRecord::Base
     end
   end
 
+  # attack_type but without str-replace shenanigans
   def full_attack_type
     read_attribute(:attack_type)
   end
 
+  # Attack symbol, maybe better placed in a helper class?
   def attack_type_symbol
     case full_attack_type.titleize
     when /Area Burst.*/
@@ -64,6 +83,7 @@ class Power < ActiveRecord::Base
     end
   end
 
+  # Action Type symbols, maybe better placed in a helper class?
   def action_type_symbol
     case action_type.titleize
     when "Standard Action"

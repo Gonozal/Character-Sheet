@@ -106,6 +106,8 @@ ActiveRecord::Schema.define(version: 20140218122229) do
     t.text     "flavor"
     t.text     "requirement"
     t.text     "keywords"
+    t.integer  "uses",         default: 1
+    t.integer  "used",         default: 0
     t.boolean  "child",        default: false
     t.datetime "created_at"
     t.datetime "updated_at"

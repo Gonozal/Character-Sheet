@@ -8,6 +8,30 @@ jQuery ->
   $('#feats').on 'touchmove', (event) ->
     event.stopPropagation()
 
+  $(".power-small").hammer({swipe_velocity: 0.2}).on "swipe", (event) ->
+    event.preventDefault()
+    id = $(this).attr("id").replace( /^\D+/g, '')
+    # Decide if power should increase in use or decrease
+    if event.gesture.direction == Hammer.DIRECTION_RIGHT
+      action = "increase_usage"
+    else if event.gesture.direction == Hammer.DIRECTION_LEFT
+      action = "decrease_usage"
+
+    target = $(this)
+    # Update power and toggle used
+    $.ajax({
+      type: "PUT",
+      url: "/powers/#{id}",
+      data: { power: { action: action} },
+      success:(data) ->
+        console.log data
+        if data.used < data.uses or target.hasClass("at-will")
+          target.removeClass('used');
+        else
+          target.addClass('used')
+        return false
+    })
+
   window.onresize = ->
     $('#feats > .feats').height(window.innerHeight - 260)
   window.onresize()

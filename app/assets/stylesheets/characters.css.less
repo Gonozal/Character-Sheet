@@ -228,6 +228,8 @@ a.unstyled {
   }
 }
 
+
+
 .power-small{
   width: 260px;
   padding: 2px 5px;
@@ -256,8 +258,17 @@ a.unstyled {
     font-size: 0.75em;
   }
 
+  &.used>.power-row>.power-name{
+    text-decoration: line-through;
+  }
+
   &.active {
-    color: #fff;
+    &:not(.used) {
+      color: #fff;
+    }
+    &.used{
+      color: #bbb;
+    }
     &.at-will {
       .at-will-bg;
     }
@@ -303,11 +314,21 @@ a.unstyled {
 }
 
 .encounter{
-  color: @encounter-color;
+  &:not(.used){
+    color: @encounter-color;
+  }
+  &.used {
+    color: darken(@encounter-color, 25%);
+  }
 }
 
 .daily{
-  color: @daily-color;
+  &:not(.used){
+    color: @daily-color;
+  }
+  &.used {
+    color: lighten(@daily-color, 50%);
+  }
 }
 
 .at-will-bg{

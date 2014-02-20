@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require hammer
 //= require twitter/bootstrap
 //= require turbolinks
 //= require jquery.qtip.js

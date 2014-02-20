@@ -10,6 +10,9 @@
     p.attr-name.pull-right
       i.fa.fa-key.offset
       = power.keywords.titleize
+  - if power.attack_type.present?
+    p.attr-name
+      em = power.attack_type
   p.attr-name
     i.fa [class="#{power.action_type_symbol}"]
     strong = " #{power.action_type.titleize}"

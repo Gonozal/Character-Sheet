@@ -16,6 +16,9 @@ gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .js.coffee assets and views
 gem 'coffee-rails', '~> 4.0.0'
 
+# Hammer JS (swipe gestures)
+gem 'hammerjs-rails'
+
 # slim templating language
 gem 'slim'
 

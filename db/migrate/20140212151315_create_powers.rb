@@ -13,6 +13,8 @@ class CreatePowers < ActiveRecord::Migration
       t.text :requirement
       t.text :keywords
 
+      t.integer :uses, default: 1
+      t.integer :used, default: 0
       t.boolean :child, default: false
 
       # t.text :flavor

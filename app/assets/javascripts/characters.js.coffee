@@ -4,12 +4,12 @@
 
 jQuery ->
   FastClick.attach(document.body)
-  $('a.power-small').qtip
+  $('.power-small').qtip
     content:
       text: ->
-        $(this).attr('data-content');
+        $(this).next().html()
       title: ->
-        $(this).attr('data-title');
+        $(this).attr('data-title')
     show: 'click',
     hide: 'unfocus'
     style:
@@ -24,6 +24,12 @@ jQuery ->
       adjust:
         method: "none shift"
     events:
+      show: (events, api) ->
+        target = api.elements.target
+        target.addClass('active')
+      hide: (events, api) ->
+        target = api.elements.target
+        target.removeClass('active')
       render: (events, api) ->
         tooltip = api.elements.tooltip
         target = api.elements.target

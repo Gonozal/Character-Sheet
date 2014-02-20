@@ -2,6 +2,13 @@
 // They will automatically be included in application.css.
 // You can use less here
 
+@import "twitter/bootstrap/variables.less";
+@import "twitter/bootstrap/mixins.less";
+
+@at-will-color: #00821e;
+@encounter-color: #DD1919;
+@daily-color: #000;
+
 html {
   width: 700px;
   padding: 0px;
@@ -75,13 +82,19 @@ dd.short{
   padding-top: 2px;
 }
 
-.modal-body{
+////////////////////////
+// Power card display //
+////////////////////////
+.qtip-bootstrap {
+  padding: 0;
+}
+.qtip-content{
   padding-left: 0px !important;
   font-size: 0.9em;
   line-height: 1.2em;
 }
 
-.modal-header{
+.qtip-titlebar{
   border-bottom: 0px !important;
   border-top-right-radius: 5px;
   border-top-left-radius: 5px;
@@ -91,11 +104,6 @@ dd.short{
     margin-top: 2px;
     margin-bottom: 2px;
   }
-}
-
-.modal-footer{
-  padding-top: 5px;
-  padding-bottom: 5px;
 }
 
 .target {
@@ -110,13 +118,9 @@ p.attr-name {
   padding-left: 10px;
 }
 
-.modal-body {
-  max-height: 620px;
-}
-
 p.flavor {
   background-color: #C8B5A3;
-  margin-top: -16px;
+  margin-top: -9px;
   width: 100%;
   padding-right: 5px;
   padding-top: 4px;
@@ -195,7 +199,7 @@ tr.abilities:nth-child(2n+3){
 #powers {
   width: 260px;
   margin-top: -47px;
-  font-size: 1.1em;
+  font-size: 14px;
 }
 
 
@@ -208,11 +212,11 @@ a.unstyled {
 
 .power-small{
   width: 260px;
-  margin-top: 5px;
-  padding-left: 5px;
-  padding-right: 5px;
+  padding: 2px 5px;
   line-height: 15px;
-  border-radius: 5px;
+  border-radius: 3px;
+  font-weight: 300;
+  margin-left: 0;
 
   >.power-row{
     white-space: nowrap;
@@ -221,7 +225,7 @@ a.unstyled {
 
     >.power-display{
       width: 35%;
-      font-size: 0.7em;
+      font-size: 0.75em;
       text-align: right;
       overflow: hidden;
       white-space: nowrap;
@@ -231,7 +235,39 @@ a.unstyled {
 
   >.details{
     line-height: 13px;
-    font-size: 0.7em;
+    font-size: 0.75em;
+  }
+
+  &.active {
+    color: #fff;
+    &.at-will {
+      .at-will-bg;
+    }
+    &.encounter {
+      .encounter-bg;
+    }
+    &.daily {
+      .daily-bg;
+    }
+  }
+}
+
+.qtip-at-will {
+  .qtip-titlebar {
+    color: #FFF;
+    .at-will-bg;
+  }
+}
+.qtip-encounter {
+  .qtip-titlebar {
+    color: #FFF;
+    .encounter-bg;
+  }
+}
+.qtip-daily {
+  .qtip-titlebar {
+    color: #FFF;
+    .daily-bg;
   }
 }
 
@@ -244,62 +280,33 @@ a.unstyled {
   float: left;
   display: inline;
   width: 65%;
+  font-weight: normal;
 }
 
 .at-will{
-  color: #008800 !important;
+  color: @at-will-color;
 }
 
 .encounter{
-  color: #FF1919 !important;
+  color: @encounter-color;
 }
 
 .daily{
-  color: #000 !important;
+  color: @daily-color;
 }
-
 
 .at-will-bg{
-  background: #00821e;
-  background: -moz-linear-gradient(left,  #00821e 0%, #00821e 55%, #00bf09 100%);
-  background: -webkit-gradient(linear, left top, right top, color-stop(0%,#00821e), color-stop(55%,#00821e), color-stop(100%,#00bf09));
-  background: -webkit-linear-gradient(left,  #00821e 0%,#00821e 55%,#00bf09 100%);
-  background: -o-linear-gradient(left,  #00821e 0%,#00821e 55%,#00bf09 100%);
-  background: -ms-linear-gradient(left,  #00821e 0%,#00821e 55%,#00bf09 100%);
-  background: linear-gradient(to right,  #00821e 0%,#00821e 55%,#00bf09 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00821e', endColorstr='#00bf09',GradientType=1 );
+  background: @at-will-color;
+  #gradient > .horizontal(darken(@at-will-color, 15%); @at-will-color);
 }
-
 .encounter-bg{
-  background: #bc4f31;
-  background: -moz-linear-gradient(left,  #bc4f31 0%, #bc4f31 55%, #e53222 100%);
-  background: -webkit-gradient(linear, left top, right top, color-stop(0%,#bc4f31), color-stop(55%,#bc4f31), color-stop(100%,#e53222));
-  background: -webkit-linear-gradient(left,  #bc4f31 0%,#bc4f31 55%,#e53222 100%);
-  background: -o-linear-gradient(left,  #bc4f31 0%,#bc4f31 55%,#e53222 100%);
-  background: -ms-linear-gradient(left,  #bc4f31 0%,#bc4f31 55%,#e53222 100%);
-  background: linear-gradient(to right,  #bc4f31 0%,#bc4f31 55%,#e53222 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#bc4f31', endColorstr='#e53222',GradientType=1 );
+  background: @at-will-color;
+  #gradient > .horizontal(darken(@encounter-color, 15%); @encounter-color);
 }
-
 .daily-bg{
-  background: #7f7f7f;
-  background: -moz-linear-gradient(left,  #7f7f7f 0%, #7f7f7f 55%, #bcbcbc 100%);
-  background: -webkit-gradient(linear, left top, right top, color-stop(0%,#7f7f7f), color-stop(55%,#7f7f7f), color-stop(100%,#bcbcbc));
-  background: -webkit-linear-gradient(left,  #7f7f7f 0%,#7f7f7f 55%,#bcbcbc 100%);
-  background: -o-linear-gradient(left,  #7f7f7f 0%,#7f7f7f 55%,#bcbcbc 100%);
-  background: -ms-linear-gradient(left,  #7f7f7f 0%,#7f7f7f 55%,#bcbcbc 100%);
-  background: linear-gradient(to right,  #7f7f7f 0%,#7f7f7f 55%,#bcbcbc 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7f7f7f', endColorstr='#bcbcbc',GradientType=1 );
+  background: @at-will-color;
+  #gradient > .horizontal(@daily-color; lighten(@daily-color, 33%));
 }
-
-.power-small:nth-child(even) {
-  margin-left: 0px;
-}
-.power-small:nth-child(odd) {
-  margin-left: 0px;
-}
-
-
 
 .attr-score {
   width: 28px;

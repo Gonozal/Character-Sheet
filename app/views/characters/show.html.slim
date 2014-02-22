@@ -3,8 +3,6 @@
     .block#class-and-name
       .name = @character.name
       .class = "Level #{@character.level} #{@character.race} #{@character.klass}"
-    .block#defenses
-      = render 'defenses'
   .row-ish
     .block#combat_stats
       = render 'combat_stats'
@@ -12,8 +10,18 @@
         = render 'feats'
     .block#abilities
       = render 'abilities'
-    .block#skills
-      = render 'skills'
+    .block.skill-column
+      .row-ish#defenses
+        = render 'defenses'
+      .row-ish#actions
+        = render 'actions'
+      .row-ish#rest
+        = render 'rest'
+      .row-ish#skills
+        = render 'skills'
+        = render 'basic_attacks'
+      .row-ish#log
+        = render 'log'
     .block#powers
       = render 'powers'
 = render @character.feats

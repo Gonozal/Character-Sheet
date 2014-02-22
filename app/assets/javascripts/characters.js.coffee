@@ -24,7 +24,6 @@ jQuery ->
       url: "/powers/#{id}",
       data: { power: { action: action} },
       success:(data) ->
-        console.log data
         if data.used < data.uses or target.hasClass("at-will")
           target.removeClass('used');
         else

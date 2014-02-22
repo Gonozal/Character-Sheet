@@ -85,8 +85,8 @@ dd.short{
 }
 
 .defenses>li{
-  padding-left: 1px !important;
-  padding-right: 1px !important;
+  padding-left: 0px !important;
+  padding-right: 0px !important;
   padding-top: 2px;
 }
 
@@ -211,14 +211,82 @@ tr.abilities:nth-child(2n+3){
   border-color: white;
 }
 
+.skill-column{
+  margin-top: -40px;
+}
 
 #class-and-name {
-  width: 155px;
+  width: 245px;
+}
+
+.class {
+  font-size: 0.8em;
 }
 
 #defenses {
-  width: 180px;
-  margin-left: 2px;
+  width: 140px;
+  margin-left: 4px;
+}
+
+#actions {
+  width: 140px;
+  margin-right: 4px;
+  margin-top: 8px;
+  font-size: 1.1em;
+  margin-left: 4px;
+  margin-bottom: 10px;
+}
+
+#rest {
+  width: 140px;
+  margin-right: 4px;
+  margin-left: 4px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+#log {
+  margin-top: 5px;
+  ul {
+    width: 146px;
+    font-size: 0.75em;
+    font-weight: 400;
+    margin-left: 5px;
+    li:nth-child(odd){
+      background-color: #f3f3f3;
+    }
+    li {
+      line-height: 1.5em;
+      padding-left: 3px;
+    }
+  }
+
+  .red {
+    color: red;
+  }
+  .green {
+    color: green;
+  }
+}
+
+.fa-xl {
+  font-size: 1.6em;
+  vertical-align: -25%;
+  width: 25px;
+  text-align: center;
+}
+
+.icon-xl{
+  font-size: 4em;
+}
+
+ul.inline {
+  margin-bottom: 0px;
+}
+
+ul.actions li{
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
 #powers {
@@ -367,9 +435,6 @@ a.unstyled {
   text-align: right;
   font-weight: 800;
   padding: 2px;
-}
-
-.double-box {
 }
 
 .surges {

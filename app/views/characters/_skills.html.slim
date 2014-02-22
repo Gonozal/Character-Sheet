@@ -12,11 +12,3 @@ table.table-striped.table-condensed#skills-table
          |  
       td.skill-value = skill.value
       td = skill.stat[0..2]
-
-.headline
-  strong = "Basic Attacks"
-.block#basic-attacks
-  - @character.powers.each do |p|
-    - next unless ["Attack", "Basic Attack"].include? p.display
-    a.unstyled.basic-attack [href="#power_#{p.id}" data-toggle="modal"]
-      span class = (p.power_usage.downcase) = p.name

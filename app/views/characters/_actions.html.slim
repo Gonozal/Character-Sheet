@@ -1,9 +1,33 @@
-ul.inline.actions
-  li
-    i.fa-xl.fa.fa-tint#damage
-  li
-    i.fa-xl.fa.fa-plus#heal
-  li
-    i.fa-xl.fa.fa-heart#surge
-  li
-    i.fa-xl.fa.fa-clock-o#temp-hp
+= form_for @character, remote: true, html: {class: "character"} do |f|
+  .row-ish#action-numbers
+    .input
+      = f.label :hp_change, "Hitpoints"
+      = f.number_field :hp_change, class: :numbers
+    .input
+      = f.label :hs_change, "Surges"
+      = f.number_field :hs_change, class: :numbers
+  .row-ish#actions
+    ul.inline.actions.qul
+      li
+        i.qaction.fa-xl.fa.fa-tint#damage
+        .hidden
+          input.btn.btn-danger type="submit" value="Take Damage" name="damage"
+      li
+        i.qaction.action.action-health#heal
+        .hidden
+          input.btn.btn-success type="submit" value="Receive Healing" name="heal"
+      li
+        i.qaction.fa-xl.fa.fa-clock-o#temp-hp
+        .hidden
+          input.btn.btn-info type="submit" value="Set Temporary HP" name="temp_hp"
+  .row-ish#rest
+    ul.inline.rests.qul
+      li
+        i.qaction.action.action-short-rest#short-rest
+        .hidden
+          input.btn.btn-warning type="submit" value="Take Short Rest" name="short_rest"
+      li
+        i.qaction.action.action-long-rest#heal
+        .hidden
+          input.btn.btn-inverse type="submit" value="Take Extended Rest" name="long_rest"
+  .action-qtips

@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 20140222225057) do
     t.integer  "temp_hp",                                default: 0
     t.integer  "current_hp",                             default: 0
     t.integer  "healing_surges"
+    t.integer  "current_hs",                             default: 0
     t.string   "name"
     t.decimal  "height",         precision: 3, scale: 2
     t.decimal  "weight",         precision: 5, scale: 2

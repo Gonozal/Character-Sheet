@@ -24,10 +24,13 @@ jQuery ->
       url: "/powers/#{id}",
       data: { power: { action: action} },
       success:(data) ->
+        console.log data
         if data.used < data.uses or target.hasClass("at-will")
           target.removeClass('used');
+          $("#log").html(data.log)
         else
           target.addClass('used')
+          $("#log").html(data.log)
         return false
     })
 
@@ -36,6 +39,7 @@ jQuery ->
   window.onresize()
 
   FastClick.attach(document.body)
+
   $('.power-small').qtip
     content:
       text: ->
@@ -50,7 +54,7 @@ jQuery ->
       event: 'unfocus'
       effect: false
     style:
-      width: "405px"
+      width: "407px"
       classes: 'qtip-bootstrap'
     position:
       my: "right center"
@@ -75,4 +79,42 @@ jQuery ->
         tooltip.addClass("qtip-" + $(target).attr('data-class'))
   $('#powers').on "click", '.power-small.active', (event) ->
     $(this).qtip().hide()
-    console.log "click..?"
+
+
+
+  $('.qul>li>i').qtip
+    content:
+      text: ->
+        $(this).next().html()
+    show:
+      event: 'click'
+      delay: 0
+      effect: false
+    hide:
+      event: 'unfocus'
+      effect: false
+    style:
+      width: "200px"
+      classes: 'qtip-bootstrap qtip-action'
+    position:
+      my: "top center"
+      at: "bottom center"
+      container: $(".action-qtips")
+      viewport: $('body')
+      adjust:
+        method: "shift none"
+    events:
+      show: (events, api) ->
+        target = api.elements.target
+        setTimeout(->
+          target.addClass('active')
+        , 0)
+      hide: (events, api) ->
+        target = api.elements.target
+        target.removeClass('active')
+      render: (events, api) ->
+        tooltip = api.elements.tooltip
+        target = api.elements.target
+        tooltip.addClass("qtip-" + $(target).attr('data-class'))
+  $('.qul').on "click", '.qaction.active', (event) ->
+    $(this).qtip().hide()

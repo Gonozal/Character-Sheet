@@ -8,6 +8,7 @@ class CreateCharacters < ActiveRecord::Migration
       t.integer :temp_hp, default: 0
       t.integer :current_hp, default: 0
       t.integer :healing_surges
+      t.integer :current_hs, default: 0
 
       t.string :name
       t.decimal :height, precision: 3, scale: 2

@@ -1,0 +1,56 @@
+<svg xmlns:x="http://ns.adobe.com/Extensibility/1.0/" xmlns:i="http://ns.adobe.com/AdobeIllustrator/10.0/" xmlns:graph="http://ns.adobe.com/Graphs/1.0/" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" width="100px" height="100px" viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve">
+<switch>
+	<foreignObject requiredExtensions="http://ns.adobe.com/AdobeIllustrator/10.0/" x="0" y="0" width="1" height="1">
+		</foreignObject>
+	<g i:extraneous="self">
+		<g id="Captions">
+			<rect x="-192" width="185" height="99"/>
+			<rect y="-36" width="100" height="30"/>
+			<text transform="matrix(1 0 0 1 66 -19.5)" fill="#000000" font-family="'Helvetica'" font-size="2.4">http://thenounproject.com</text>
+			<text transform="matrix(1 0 0 1 7.166 -24.5)"><tspan x="0" y="0" fill="#000000" font-family="'Helvetica-Bold'" font-size="6.1578">The Noun Project</tspan><tspan x="1.12" y="4.8" fill="#000000" font-family="'Helvetica-Bold'" font-size="4">Icon Template</tspan></text>
+			<text transform="matrix(1 0 0 1 -178.5 10.5)" fill="#000000" font-family="'Helvetica-Bold'" font-size="6.1578">Reminders</text>
+			<line fill="#000000" stroke="#FFFFFF" stroke-miterlimit="10" x1="8" y1="-14.5" x2="18" y2="-14.5"/>
+			<line fill="#000000" stroke="#FFFFFF" stroke-miterlimit="10" x1="-179" y1="16.5" x2="-162" y2="16.5"/>
+			<g>
+				<g>
+					<g>
+						<rect x="-170.802" y="31.318" fill="#000000" width="8.721" height="8.642"/>
+						<path fill="#000000" d="M-164.455,42.312h4.747v-4.703h-4.747V42.312z M-159.266,42.749h-5.63V37.17h5.63V42.749        L-159.266,42.749z M-166.221,44.062h8.279v-8.203h-8.279V44.062L-166.221,44.062z M-157.5,44.5h-9.163v-9.079h9.163V44.5        L-157.5,44.5z"/>
+						<polygon fill="#000000" points="-166.149,44.133 -166.292,43.991 -158.013,35.787 -157.871,35.929       "/>
+					</g>
+				</g>
+			</g>
+			<rect x="-179" y="58" fill="none" width="35" height="32.5"/>
+			<text transform="matrix(1 0 0 1 -179 60.1572)"><tspan x="0" y="0" fill="#000000" font-family="'Helvetica-Bold'" font-size="3">Strokes</tspan><tspan x="0" y="5" fill="#000000" font-family="'Helvetica'" font-size="2.4">Try to keep strokes at 4px</tspan><tspan x="0" y="10" fill="#000000" font-family="'Helvetica'" font-size="2.4">Minimum stroke weight is 2px</tspan><tspan x="0" y="14.5" fill="#000000" font-family="'Helvetica'" font-size="2.4">For thicker strokes use even </tspan><tspan x="0" y="17.5" fill="#000000" font-family="'Helvetica'" font-size="2.4">numbers: 6px, 8px etc.</tspan><tspan x="0" y="22" fill="#000000" font-family="'Helvetica-Bold'" font-size="2.4">Remember to expand strokes </tspan><tspan x="0" y="25" fill="#000000" font-family="'Helvetica-Bold'" font-size="2.4">before saving as an SVG </tspan></text>
+			<rect x="-136.5" y="58" fill="none" width="35" height="32.5"/>
+			<text transform="matrix(1 0 0 1 -136.5 60.1572)"><tspan x="0" y="0" fill="#000000" font-family="'Helvetica-Bold'" font-size="3">Size</tspan><tspan x="0" y="5" fill="#000000" font-family="'Helvetica'" font-size="2.4">Cannot be wider or taller than </tspan><tspan x="0" y="8.5" fill="#000000" font-family="'Helvetica'" font-size="2.4">100px (artboard size)</tspan><tspan x="0" y="13.5" fill="#000000" font-family="'Helvetica'" font-size="2.4">Scale your icon to fill as much of </tspan><tspan x="0" y="16.5" fill="#000000" font-family="'Helvetica'" font-size="2.4">the artboard as possible</tspan></text>
+			<rect x="-94" y="58" fill="none" width="35" height="32.5"/>
+			<text transform="matrix(1 0 0 1 -94 60.1572)"><tspan x="0" y="0" fill="#000000" font-family="'Helvetica-Bold'" font-size="3">Ungroup</tspan><tspan x="0" y="5" fill="#000000" font-family="'Helvetica'" font-size="2.4">If your design has more than one </tspan><tspan x="0" y="8" fill="#000000" font-family="'Helvetica'" font-size="2.4">shape, make sure to ungroup</tspan></text>
+			<rect x="-50" y="58" fill="none" width="35" height="32.5"/>
+			<text transform="matrix(1 0 0 1 -50 60.1572)"><tspan x="0" y="0" fill="#000000" font-family="'Helvetica-Bold'" font-size="3">Save as</tspan><tspan x="0" y="5" fill="#000000" font-family="'Helvetica'" font-size="2.4">Save as .SVG and make sure </tspan><tspan x="0" y="8" fill="#000000" font-family="'Helvetica'" font-size="2.4">&#8220;Use Artboards&#8221; is checked</tspan></text>
+			<text transform="matrix(1.0074 0 0 1 -125.542 30.5933)" fill="#000000" font-family="'Helvetica'" font-size="2.5731">100px</text>
+			<text transform="matrix(1.0074 0 0 1 -41 39)" fill="#000000" font-family="'Helvetica-Bold'" font-size="5.1462">.SVG</text>
+			<rect x="-126.514" y="34.815" fill="#000000" width="10.261" height="10.185"/>
+			<rect x="-126.477" y="31.766" fill="#000000" width="0.522" height="2.337"/>
+			<rect x="-116.812" y="31.766" fill="#000000" width="0.523" height="2.337"/>
+			<rect x="-127" y="32.337" fill="#000000" width="11.233" height="0.572"/>
+			<g>
+				<rect x="-83.805" y="33.844" fill="#000000" width="10.305" height="10.156"/>
+				<rect x="-76.809" y="28.707" fill="#000000" width="3.308" height="3.261"/>
+			</g>
+			<rect x="-178.5" y="22.5" fill="#000000" stroke="#FFFFFF" stroke-miterlimit="10" width="30" height="30"/>
+			<rect x="-136.5" y="22.5" fill="#000000" stroke="#FFFFFF" stroke-miterlimit="10" width="30" height="30"/>
+			<rect x="-93.5" y="22.5" fill="#000000" stroke="#FFFFFF" stroke-miterlimit="10" width="30" height="30"/>
+			<rect x="-49.5" y="22.5" fill="#000000" stroke="#FFFFFF" stroke-miterlimit="10" width="30" height="30"/>
+		</g>
+		<g id="Your_Icon">
+			<path d="M40.695,68c0,0-6.83-0.974-10.245-5.528c-3.415-4.553-4.553-10.161-3.415-14.714c1.138-4.553,5.691-6.789,4.553-10.204     s2.277,4.574,1.138,6.85c-1.138,2.277,3.415,3.425,4.553,0.01c1.138-3.415-2.695-7.661-3.415-9.101     c-2.277-4.553-0.647-10.977,1.138-13.656c2.276-3.415,3.748-4.885,4.553-5.69c2.277-2.276-2.276,3.416-1.138,7.969     c1.138,4.553,3.415,7.967,5.691,6.829c2.277-1.138-0.741-3.251-1.138-6.829C41.833,13.691,49.802,8,49.802,8     s1.138,17.074,5.69,19.351c3.219,1.609,3.415,7.968,1.139,12.521c-2.099,4.198-6.829,10.244-3.415,13.659     c3.415,3.415,9.106,3.415,11.384,1.139c2.275-2.276,2.275-6.83,3.414-9.106c1.138-2.276-2.181,4.649,1.138,7.967     c3.415,3.416,0,13.659-3.415,14.798c-3.414,1.138-9.105,1.138-10.244,1.138s2.277-1.138,1.139-4.552     c-1.139-3.415,0,4.552-2.277-1.139c-2.275-5.691-8.91-3.611-5.69-6.83c1.138-1.138-2.276,0-1.138,3.415s4.553,4.554,1.138,5.69     c-2.16,0.722-6.83-3.414-6.83-5.69s1.139-7.968,1.139-7.968s-3.416,3.415-4.554,6.829c-0.72,2.16,1.139,4.389,2.277,5.527     C41.833,65.888,44.11,67,44.11,68S40.695,68,40.695,68z"/>
+			<path d="M54.354,51.254C54.354,51.254,55.492,46.702,54.354,51.254c-0.616,2.47,5.692,4.554,7.969,2.277     c2.277-2.277,2.277-6.83,2.277-10.245c0-3.415,2.275-7.968,3.414-9.106C69.151,33.042,53.215,43.287,54.354,51.254z"/>
+			<path d="M32.625,66.853l-20.519,0.241c0,0-2.177,2.866-1.831,5.388c0.345,2.522,1.769,5.41,5.368,5.432     c3.6,0.019,19.483-7.808,19.483-7.808L32.625,66.853z"/>
+			<path d="M70.541,67.081l-1.92,3.627L86.13,76.77c0,0,4.087,0.378,6.009-3.249c1.921-3.626-2.788-7.551-2.788-7.551L70.541,67.081     z"/>
+			<path d="M41.866,70.536l5.659,1.207l1.138,14.798c0,0-5.372,6.355-10.245,3.415c-4.873-2.942-7.913-5.005-7.711-7.543     C30.909,79.875,41.866,70.536,41.866,70.536z"/>
+			<path d="M53.216,71.743l6.137-0.504l12.545,8.655c0,0,0.92,3.288-2.064,5.304c-2.981,2.017-8.12,4.06-10.926,2.48     C56.102,86.098,53.216,71.743,53.216,71.743z"/>
+		</g>
+	</g>
+</switch>
+</svg>

@@ -14,7 +14,8 @@ class PowersController < ApplicationController
     end
     puts @power.to_yaml
     if @power.save
-      render json: @power, location: @power
+      @character = @power.character
+      render 'update.json.jbuilder'
     else
       render nothing: true
     end

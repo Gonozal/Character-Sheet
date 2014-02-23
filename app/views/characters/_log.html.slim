@@ -1,5 +1,5 @@
 .headline
   strong = "Event Log"
 ul.unstyled.log
-  - @character.logs.reverse.each do |l|
+  - @character.logs.each do |l|
     li [class=l.color] = l.text

@@ -20,7 +20,7 @@ class Power < ActiveRecord::Base
   scope :not_child, -> { unscoped.where(child: false) }
 
   default_scope {
-    order(order_by_case).order(:name).
+    where(prepared: true).order(order_by_case).order(:name).
     includes([:power_weapons, :power_attributes])
   }
 

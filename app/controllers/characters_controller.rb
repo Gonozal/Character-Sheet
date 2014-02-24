@@ -8,6 +8,7 @@ class CharactersController < ApplicationController
   end
 
   def update
+    puts params.to_yaml
     @character = Character.find(params[:id])
     hp_change = params[:character][:hp_change].to_i
     hs_change = params[:character][:hs_change].to_i
@@ -28,7 +29,7 @@ class CharactersController < ApplicationController
       @character.save
       render :update_rested
     elsif params.has_key? :long_rest
-      @character.long_rest
+      @character.long_rest params[:character]
       @character.save
       render :update_extended_rest
     end

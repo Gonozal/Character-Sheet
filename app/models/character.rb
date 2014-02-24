@@ -43,7 +43,26 @@ class Character < ActiveRecord::Base
     a = (a - 10) / 2
   end
 
-  def long_rest
+  def long_rest(params = {})
+    # Handle case of wizard's spellbook
+    if klass == "Wizard"
+      puts params
+      spellbook_powers.each do |lvl, powers|
+        powers.each do |power|
+          if params.has_key? lvl.to_s.to_sym and power.id == params[level.to_s.to_sym].to_i
+            power.prepared = true
+            puts "selected:"
+            puts power.to_yaml
+          else
+            puts "deselected:"
+            puts power.to_yaml
+            power.prepared = false
+          end
+          power.save if power.changed?
+        end
+        puts "############"
+      end
+    end
     # Set HP and HS to full
     self.current_hp = hit_points
     self.current_hs = healing_surges
@@ -52,7 +71,7 @@ class Character < ActiveRecord::Base
     # Reset all power usages
     powers.each do |p|
       p.used = 0
-      p.save
+      p.save if p.changed?
     end
 
     # Write logs
@@ -67,7 +86,7 @@ class Character < ActiveRecord::Base
     powers.each do |p|
       if p.power_usage.downcase == "encounter"
         p.used = 0
-        p.save
+        p.save if p.changed?
       end
     end
     logs.create({text: "Took a short rest", color: "text-info"})

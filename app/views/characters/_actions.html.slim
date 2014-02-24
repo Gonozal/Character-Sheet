@@ -29,5 +29,14 @@
       li
         i.qaction.action.action-long-rest#heal
         .hidden
+          - if @character.klass == "Wizard"
+            .spellbook
+              = "Select your Spells"
+              - @character.spellbook_powers.each do |lvl, powers|
+                .level.muted = "Level #{lvl}"
+                - powers.each do |power|
+                  - checked = power.prepared?? {checked: true} : {}
+                  = f.radio_button "power_#{lvl}", power.id, checked
+                  = label_tag "character_power_#{lvl}_#{power.id}", power.name
           input.btn.btn-inverse type="submit" value="Take Extended Rest" name="long_rest"
   .action-qtips

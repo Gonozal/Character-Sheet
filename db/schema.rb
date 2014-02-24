@@ -118,6 +118,7 @@ ActiveRecord::Schema.define(version: 20140222225057) do
     t.integer  "uses",         default: 1
     t.integer  "used",         default: 0
     t.boolean  "child",        default: false
+    t.boolean  "prepared",     default: true
     t.datetime "created_at"
     t.datetime "updated_at"
   end

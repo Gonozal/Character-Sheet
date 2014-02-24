@@ -8,7 +8,7 @@ class Import < ActiveRecord::Base
     xml
   end
 
-  def self.import(path = "lib/assets/hava_lvl1Detail.dnd4e")
+  def self.import(path = "lib/assets/maraDetail.dnd4e")
     xml = Import.path(path)
     # Import char and save it so we can reference powers and skills to it
     c = Import.import_character(xml)

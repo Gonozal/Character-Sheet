@@ -17,27 +17,8 @@ class CreatePowers < ActiveRecord::Migration
       t.integer :used, default: 0
       t.boolean :child, default: false
 
-      # t.text :flavor
-      # t.string :keywords
-      # t.string :power_type
-
-      # t.string :target
-      # t.string :targets
-      # t.string :attack
-      # t.string :special
-      # t.string :trigger
-      # t.text :hit
-      # t.text :aftereffect
-      # t.text :miss
-      # t.text :effect
-      # t.string :requirement
-      # t.string :sustain_minor
-      # t.string :staff_of_defense
-      # t.string :thaneborn_triumph
-      # t.string :stalker_spirit
-      # t.string :standard_action
-      # t.string :intrinsic_nature
-      # t.string :symbiosis
+      # Wizard-only spellbook preparation
+      t.boolean :prepared, default: true
 
       t.timestamps
     end

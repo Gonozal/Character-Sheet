@@ -7,6 +7,8 @@ class Character < ActiveRecord::Base
   default_scope {
     includes(:powers, :feats, :skills)
   }
+
+
   attr_accessor :hp_change, :hs_change
   before_save :generate_stat_logs
 
@@ -18,6 +20,14 @@ class Character < ActiveRecord::Base
     else 
       ""
     end
+  end
+
+  def spellbook_powers
+    return [] if klass != "Wizard"
+    powers.not_child.to_a.select do |p|
+      (/^Wizard Attack \d+/ === p.display and p.power_usage == "Daily") or
+        /^Wizard Utility \d+/ === p.display
+    end.group_by(&:level)
   end
 
   def bloodied?

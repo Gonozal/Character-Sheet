@@ -17,6 +17,13 @@ class Power < ActiveRecord::Base
     ret << " END"
   end
 
+  scope :not_child, -> { unscoped.where(child: false) }
+
+  default_scope {
+    order(order_by_case).order(:name).
+    includes([:power_weapons, :power_attributes])
+  }
+
   def increase_usage
     self.used += 1 if used < uses
     log = {text: "#{name} used", color: "text-warning"}
@@ -36,11 +43,6 @@ class Power < ActiveRecord::Base
   def available?
     used < uses or power_usage.downcase == "at-will"
   end
-
-  default_scope {
-    order(order_by_case).order(:name).
-    includes([:power_weapons, :power_attributes])
-  }
 
   # Make standard attack type shorter, should probably be changed
   def attack_type

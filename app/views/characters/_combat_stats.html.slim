@@ -1,16 +1,14 @@
 .block#hp-and-surges
   .headline
-    strong = "Hit Points"
+    strong = "Hit Points:"
+    strong.pull-right-padded = @character.hit_points
   #hp
     .box
-      strong = "HP"
-      span.pull-right
+      strong.hp-label = "Current HP:"
+      span.pull-right [class = @character.hp_class]
         strong.hp = @character.current_hp
-        span.hp = "(+"
-        span.hp = @character.temp_hp
-        span.hp = ")"
-        strong.hp = "/#{@character.hit_points}"
-      .subtitle = "(Bloodied #{@character.hit_points / 2})"
+        span.hp = " (+#{@character.temp_hp})"
+      .subtitle = "(Bloodied at #{@character.hit_points / 2})"
   #surges.row-ish
     .text-center.row-ish
       strong.surges = "Healing Surges"
@@ -19,7 +17,7 @@
         .surge-value.text-center.double-box
           = @character.hit_points / 4
       span.pull-right
-        .subtitle.text-center = "Surges/Day"
+        .subtitle.text-center = "Surges per Day"
         .surge-value.text-center.double-box
           = "#{@character.current_hs} / #{@character.healing_surges}"
   #speed-init.row-ish

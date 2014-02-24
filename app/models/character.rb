@@ -7,8 +7,26 @@ class Character < ActiveRecord::Base
   default_scope {
     includes(:powers, :feats, :skills)
   }
-
   attr_accessor :hp_change, :hs_change
+  before_save :generate_stat_logs
+
+  def hp_class
+    if dying?
+      "text-error"
+    elsif bloodied?
+      "text-warning"
+    else 
+      ""
+    end
+  end
+
+  def bloodied?
+    current_hp <= (hit_points / 2)
+  end
+
+  def dying?
+    current_hp <= 0
+  end
 
   def ability_modifier(ability)
     a = read_attribute(ability.downcase.to_sym).to_i
@@ -16,41 +34,41 @@ class Character < ActiveRecord::Base
   end
 
   def long_rest
+    # Set HP and HS to full
     self.current_hp = hit_points
     self.current_hs = healing_surges
     self.temp_hp = 0
+
+    # Reset all power usages
     powers.each do |p|
       p.used = 0
       p.save
     end
 
-    log = {text: "Took an extended rest", color: "green"}
-    logs.create(log)
+    # Write logs
+    logs.create({text: "Took an extended rest", color: "text-info"})
   end
 
   def short_rest(amount, hs_change)
-    self.current_hp = [hit_points, current_hp + amount].min
-    self.current_hs = [healing_surges, current_hs - hs_change, 0].sort[1]
-    self.temp_hp = 0
+    # Update HP and HS as if healed
+    heal(amount, hs_change)
+
+    # Also reset encounter powers
     powers.each do |p|
       if p.power_usage.downcase == "encounter"
         p.used = 0
         p.save
       end
     end
-
-    log = {text: "Took a short rest", color: "green"}
-    logs.create(log)
+    logs.create({text: "Took a short rest", color: "text-info"})
   end
 
   def set_temp_hp(amount)
     self.temp_hp = amount
-    hp_log = {text: "Received #{amount} Temporary HP", color: "green"}
-    logs.create(hp_log)
   end
 
   def damage(amount)
-    original_amount = amount
+    # Deduct temporary hp first, then normal hp
     if amount > temp_hp
       amount -= temp_hp
       self.temp_hp = 0
@@ -60,18 +78,54 @@ class Character < ActiveRecord::Base
     else
       self.temp_hp = 0
     end
-
-    hp_log = {text: "Took #{original_amount} Damage", color: "red"}
-    logs.create(hp_log) if amount > 0
   end
 
-  def heal(amount, hs_change)
+  def heal(amount, hs_change, indent = 0)
+    # first check if we have enough healing surges
+    indent = " indent#{indent}" if indent > 0
+    if hs_change > current_hs
+      return false
+    end
+    # Healing always starts from 0 hp
+    if amount > 0 and current_hp < 0
+      self.current_hp = 0
+    end
+
+    # Update HP and HS amount
     self.current_hp = [hit_points, current_hp + amount].min
     self.current_hs = [healing_surges, current_hs - hs_change, 0].sort[1]
+  end
 
-    hp_log = {text: "Healed #{amount} HP", color: "green"}
-    hs_log = {text: "Used #{hs_change} HS", color: "red"}
-    logs.create(hp_log) if current_hp_changed?
-    logs.create(hs_log) if current_hs_changed?
+  def generate_stat_logs
+    # Get values for changed HP and HS
+    hp_change = current_hp_changed?? current_hp_change.inject(:-) : 0
+    hs_change = current_hs_changed?? current_hs_change.inject(:-) : 0
+    thp_change = temp_hp_changed?? temp_hp_change.inject(:-) : 0
+
+    if hp_change < 0
+      # Adjust for healing that occurred below 0 hp
+      hp_change_adjusted = - [hp_change, current_hp_change[1]].sort[0]
+      logs.create(text: "Healed for #{hp_change_adjusted} HP", color: "text-success")
+      if current_hp_change[0] < 0
+        logs.create(text: "You are no longer dying", color: "text-success")
+      end
+    elsif hp_change + thp_change > 0
+      # Adjust for healing that occurred whith temp hp present
+      hp_change_adjusted = hp_change + thp_change
+      logs.create(text: "Took #{hp_change_adjusted} Damage", color: "text-error")
+      if current_hp < 0
+        logs.create(text: "You are now dying", color: "text-error")
+      end
+    end
+
+    if hs_change < 0
+      logs.create(text: "Regained #{- hs_change} Healing Surges", color: "text-success")
+    elsif hs_change > 0
+      logs.create(text: "Lost #{hs_change} Healing Surges", color: "text-error")
+    end
+
+    if thp_change < 0
+      logs.create(text: "Gained #{temp_hp_change[1]} Temp HP", color: "text-info")
+    end
   end
 end

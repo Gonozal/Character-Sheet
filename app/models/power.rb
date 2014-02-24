@@ -19,13 +19,13 @@ class Power < ActiveRecord::Base
 
   def increase_usage
     self.used += 1 if used < uses
-    log = {text: "#{name} used", color: "red"}
+    log = {text: "#{name} used", color: "text-warning"}
     character.logs.create(log) if used_changed? and !available?
   end
 
   def decrease_usage
     self.used -= 1 if used > 0
-    log = {text: "#{name} unused", color: "green"}
+    log = {text: "#{name} unused", color: "text-info"}
     character.logs.create(log) if used_changed? and available?
   end
 

@@ -1,0 +1,22 @@
+.account
+  .disclaimer
+    | Temporary Account View. Not representative of final state.
+    | Please upload a character and follow the link to the char sheet.
+  .characters
+    - @user.characters.each do |c|
+      .row-ish
+        a.block.character href=url_for(c)
+          .name = c.name
+          .class = "Level #{c.level} #{c.race} #{c.klass}"
+
+  .upload
+    | Import new Character
+    = form_for @user do |f|
+      = f.file_field :attachment
+      = f.submit "Import", class: "btn"
+
+  .logged-in
+    = "Logged in as "
+    em = current_user.email
+  .sign-out
+    = link_to " Sign out", destroy_user_session_path, :method => :delete

@@ -1,6 +1,8 @@
 #charsheet
   .row-ish
     .block#class-and-name
+      a.unstyled.return-link [href=url_for(@character.user)]
+        | Back to Account
       .name = @character.name
       .class = "Level #{@character.level} #{@character.race} #{@character.klass}"
   .row-ish

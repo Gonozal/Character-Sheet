@@ -14,6 +14,7 @@
 ActiveRecord::Schema.define(version: 20140222225057) do
 
   create_table "characters", force: true do |t|
+    t.integer  "user_id"
     t.integer  "level"
     t.integer  "experience"
     t.integer  "hit_points"

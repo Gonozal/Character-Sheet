@@ -273,7 +273,10 @@ form.character {
 }
 
 .class {
+  float: left;
   font-size: 0.8em;
+  width: 180px;
+  display: inline-block;
 }
 
 #defenses {
@@ -371,7 +374,22 @@ a.unstyled {
   }
 }
 
+.characters {
+  width: 180px;
+  margin-bottom: 20px;
+}
 
+a.character {
+  margin: 0px;
+}
+
+a.return-link {
+  height: 40px;
+  font-size: 0.5em;
+  width: 60px;
+  float: right;
+  display: inline-block;
+}
 
 .power-small{
   width: 260px;
@@ -520,12 +538,21 @@ a.unstyled {
 }
 
 .name {
+  float: left;
+  width: 180px;
   font-weight: 500;
+  display: inline-block;
+}
+
+.account {
+  margin: 10px;
 }
 
 .headline {
   border-top-right-radius: 15px;
-  width: 100%
+  width: 100%;
+
+  font-weight: normal;
 
   background: #ffffff; /* Old browsers */
   background: -moz-linear-gradient(left,  #ffffff 0%, #ffffff 49%, #d8d8d8 100%); /* FF3.6+ */
@@ -643,5 +670,13 @@ a.unstyled {
     line-height: 1.2em !important;
     vertical-align: -15%;
   }
+}
+
+#user_attachment{
+  display: block;
+  vertical-align: middle;
+  height: 30px;
+  line-height: 30px;
+  margin-bottom: 10px;
 }
 

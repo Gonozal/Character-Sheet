@@ -1,4 +1,6 @@
 class Character < ActiveRecord::Base
+  belongs_to :user
+
   has_many :powers
   has_many :feats
   has_many :skills

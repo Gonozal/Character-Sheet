@@ -8,8 +8,20 @@ class Import < ActiveRecord::Base
     xml
   end
 
-  def self.import(path = "lib/assets/maraDetail.dnd4e")
+
+  def self.import(path = "lib/assets/maraDetail.dnd4e", user_id = 1)
     xml = Import.path(path)
+    c = go(xml)
+    c.user_id = user_id
+    c.save
+  end
+
+  def self.import_file(file)
+    xml = Nokogiri::XML(file)
+    go(xml)
+  end
+
+  def self.go(xml)
     # Import char and save it so we can reference powers and skills to it
     c = Import.import_character(xml)
     c.save
@@ -29,6 +41,7 @@ class Import < ActiveRecord::Base
     pwrs.each do |p|
       p.first.save
     end
+    c
   end
 
   def self.import_character(xml)

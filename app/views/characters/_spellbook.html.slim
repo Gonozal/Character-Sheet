@@ -3,9 +3,9 @@
   - @character.spellbook_powers.each do |lvl, powers|
     .level.muted = "Level #{lvl}"
     - powers.each do |power|
-      - if power.prepared?
-        = radio_button_tag "character[#{lvl}]", power.id, checked: true
-      - else
-        = radio_button_tag "character[#{lvl}]", power.id
-
-      = label_tag "character_#{lvl}_#{power.id}", power.name
+      label [class = power.power_usage.downcase]
+        = power.name
+        - if power.prepared?
+          = radio_button_tag "character[#{lvl}]", power.id, checked: true
+        - else
+          = radio_button_tag "character[#{lvl}]", power.id

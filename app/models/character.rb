@@ -24,10 +24,10 @@ class Character < ActiveRecord::Base
 
   def spellbook_powers
     return [] if klass != "Wizard"
-    powers.not_child.to_a.select do |p|
+    Hash[powers.not_child.to_a.select do |p|
       (/^Wizard Attack \d+/ === p.display and p.power_usage == "Daily") or
         /^Wizard Utility \d+/ === p.display
-    end.group_by(&:level)
+    end.group_by(&:level).sort]
   end
 
   def bloodied?
@@ -44,23 +44,18 @@ class Character < ActiveRecord::Base
   end
 
   def long_rest(params = {})
+    logs.update_all("color = 'muted'")
     # Handle case of wizard's spellbook
     if klass == "Wizard"
-      puts params
       spellbook_powers.each do |lvl, powers|
         powers.each do |power|
-          if params.has_key? lvl.to_s.to_sym and power.id == params[level.to_s.to_sym].to_i
+          if params.has_key? lvl.to_s.to_sym and power.id == params[lvl.to_s.to_sym].to_i
             power.prepared = true
-            puts "selected:"
-            puts power.to_yaml
           else
-            puts "deselected:"
-            puts power.to_yaml
             power.prepared = false
           end
           power.save if power.changed?
         end
-        puts "############"
       end
     end
     # Set HP and HS to full

@@ -17,20 +17,24 @@ class Power < ActiveRecord::Base
     ret << " END"
   end
 
-  scope :not_child, -> { unscoped.where(child: false) }
+  scope :not_child, -> { where(child: false) }
+
+  scope :prepared, -> { where(prepared: true) }
 
   default_scope {
-    where(prepared: true).order(order_by_case).order(:name).
-    includes([:power_weapons, :power_attributes])
+    order(order_by_case).order(:name).includes([:power_weapons, :power_attributes])
   }
 
   def increase_usage
-    self.used += 1 if used < uses
+    self.used += 1 if used < uses and power_usage != "At-Will"
     log = {text: "#{name} used", color: "text-warning"}
-    character.logs.create(log) if used_changed? and !available?
+    if (used_changed? and !available?) or power_usage == "At-Will"
+      character.logs.create(log) 
+    end
   end
 
   def decrease_usage
+    return if power_usage == "At-Will"
     self.used -= 1 if used > 0
     log = {text: "#{name} unused", color: "text-info"}
     character.logs.create(log) if used_changed? and available?

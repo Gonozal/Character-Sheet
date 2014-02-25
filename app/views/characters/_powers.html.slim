@@ -1,12 +1,16 @@
-- @character.powers.each do |p|
+.headline Basic Attacks
+- @character.powers.prepared.each do |p|
+  - next unless ["Attack", "Basic Attack"].include? p.display
+  = render partial: 'power', locals: {p: p}
+
+.headline Utility Powers
+- @character.powers.prepared.each do |p|
   - next if ["Attack", "Basic Attack"].include? p.display
-  .power-small[id="power_small_#{p.id}" 
-    class=("#{p.power_usage.downcase} #{p.available_class}")
-    data-title=p.name data-class=(p.power_usage.downcase)]
-    .power-row
-      span.power-name [href="#power_#{p.id}" data-toggle="modal"] = p.name
-      em.power-display.pull-right = p.display
-    .power-row.details
-      span.action-type = p.action_type.titleize
-      span.pull-right.range = p.attack_type
-  = render(p)
+  - next unless /Utility/ === p.display
+  = render partial: 'power', locals: {p: p}
+
+.headline Combat Powers
+- @character.powers.prepared.each do |p|
+  - next if ["Attack", "Basic Attack"].include? p.display
+  - next if /Utility/ === p.display
+  = render partial: 'power', locals: {p: p}

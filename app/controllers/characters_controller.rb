@@ -31,6 +31,7 @@ class CharactersController < ApplicationController
     elsif params.has_key? :long_rest
       @character.long_rest params[:character]
       @character.save
+      @character = Character.find(params[:id])
       render :update_extended_rest
     end
   end

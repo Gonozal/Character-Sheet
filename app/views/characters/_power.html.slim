@@ -1,0 +1,14 @@
+.power-small[id="power_small_#{p.id}" 
+  class=("#{p.power_usage.downcase} #{p.available_class}")
+  data-title=p.name data-class=(p.power_usage.downcase)]
+  .power-row
+    span.power-name [href="#power_#{p.id}" data-toggle="modal"] = p.name
+    em.power-display.pull-right = p.display
+  - unless ["Attack", "Basic Attack"].include? p.display
+    .power-row.details
+      span.action-type = p.action_type.titleize
+      span.pull-right.range = p.attack_type
+.hidden.power-title
+  = p.name
+  span.use-power.pull-right = "Use"
+= render(p)

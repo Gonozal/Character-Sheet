@@ -89,7 +89,7 @@ class Import < ActiveRecord::Base
       xpath = "//StatBlock/Stat[alias[@name=\"#{stat}\"]]/@value"
       logger.warn [stat.strip.tr(" ", "_").underscore, xml.xpath(xpath)[0].value.to_i]
       [stat.strip.tr(" ", "_").underscore, xml.xpath(xpath)[0].value.to_i]
-    end.to_h
+    end.compact.to_h
   end
 
   # Read skills, if they've been trained and what stat is associated with it
@@ -120,7 +120,7 @@ class Import < ActiveRecord::Base
       value = xml.xpath("//RulesElement[@type=\"#{d}\"]/@name").first.value
       key = (d == "Class")? "klass" : d.underscore
       [key, value]
-    end.to_h
+    end.compact.to_h
   end
 
   # Reads character ability scores from xml file
@@ -128,7 +128,7 @@ class Import < ActiveRecord::Base
   def self.ability_scores(xml)
     xml.xpath("//AbilityScores/node()").select{|d| d.present?}.collect do |ability|
       [ability.name.underscore, ability.attributes["score"].value.to_i]
-    end.to_h
+    end.compact.to_h
   end
 
   # Reads powers from xml file

@@ -3,9 +3,6 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.1'
 
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3'
-
 # Use SCSS for stylesheets
 # gem 'sass-rails', '~> 4.0.0'
 gem 'less-rails'
@@ -22,6 +19,9 @@ gem 'hammerjs-rails'
 # slim templating language
 gem 'slim'
 
+# Fully threaded webserver
+gem 'puma'
+
 # Bootstrap for navigation and misc JS stuff
 gem "twitter-bootstrap-rails", github: "seyhunak/twitter-bootstrap-rails"
 # more flexible popovers / tooltips
@@ -36,9 +36,17 @@ gem 'jquery-rails'
 gem 'turbolinks'
 
 
-# Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-gem 'better_errors'
-gem 'binding_of_caller'
+# Awesome error handling
+group :development do
+  gem 'sqlite3'
+  gem "better_errors", '~> 0.8.0'
+  gem "binding_of_caller", '~> 0.7.1'
+end
+
+group :production do
+  gem 'pg'
+end
+
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
@@ -54,14 +62,12 @@ group :doc do
   gem 'sdoc', require: false
 end
 
-# Use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.1.2'
-
 # Use unicorn as the app server
 # gem 'unicorn'
 
-# Use Capistrano for deployment
-# gem 'capistrano', group: :development
+# Deploy with Capistrano
+gem 'capistrano', group: :development
+gem 'rvm-capistrano'
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]

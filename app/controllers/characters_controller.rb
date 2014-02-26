@@ -37,4 +37,12 @@ class CharactersController < ApplicationController
       redirect_to current_user
     end
   end
+
+  def destroy
+    @character = Character.find(params[:id])
+    if current_user == @character.user
+      @character.destroy
+    end
+    redirect_to current_user
+  end
 end

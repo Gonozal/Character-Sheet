@@ -68,7 +68,6 @@ class Import < ActiveRecord::Base
         k = attr.first
         v1 = (Array === v)? v.first : v
         if k == "weapon"
-          puts v.inspect
           next if String === v
           wpn = v.select{|k, v| v.present? and WEAPON_STATS.include? k.to_s}
           power.power_weapons.new(wpn)
@@ -88,7 +87,7 @@ class Import < ActiveRecord::Base
   def self.misc_stats(xml)
     (DEFENSES + MISC_STATS).collect do |stat|
       xpath = "//StatBlock/Stat[alias[@name=\"#{stat}\"]]/@value"
-      puts [stat.strip.tr(" ", "_").underscore, xml.xpath(xpath)[0].value.to_i].to_yaml
+      logger.warn [stat.strip.tr(" ", "_").underscore, xml.xpath(xpath)[0].value.to_i]
       [stat.strip.tr(" ", "_").underscore, xml.xpath(xpath)[0].value.to_i]
     end.to_h
   end

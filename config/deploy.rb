@@ -1,3 +1,5 @@
+require 'bundler/capistrano'
+
 # Has to be configured before require.. weird capistrano
 set :rvm_ruby_string, :local               # use the same ruby as used locally for deployme
 set :rvm_autolibs_flag, "read-only"        # more info: rvm help autolibs

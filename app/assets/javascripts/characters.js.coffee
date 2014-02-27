@@ -39,10 +39,6 @@ jQuery ->
     # Update power and toggle used
     change_power_usage(target, id, action)
 
-  window.onresize = ->
-    $('#feats > .feats').height(window.innerHeight - 260)
-  window.onresize()
-
   change_power_usage = (target, id, action) ->
     $.ajax({
       type: "PUT",
@@ -104,6 +100,10 @@ jQuery ->
 
   $('#powers').on "click", '.power-small.active', (event) ->
     $(this).qtip().hide()
+  $('#feats').on "click", '.active', (event) ->
+    $(this).qtip().hide()
+  $('#rituals').on "click", '.active', (event) ->
+    $(this).qtip().hide()
 
 
 
@@ -143,3 +143,90 @@ jQuery ->
         tooltip.addClass("qtip-" + $(target).attr('data-class'))
   $('.qul').on "click", '.qaction.active', (event) ->
     $(this).qtip().hide()
+
+
+
+  $('dl.rituals').on "click", '.ritual', (event) ->
+    $(this).qtip
+      overwrite: false
+      content:
+        text: ->
+          $(this).nextAll(".ritual-card").html()
+        title: ->
+          $(this).next(".ritual-title").html()
+      show:
+        event: event.type
+        ready: true
+        delay: 0
+        effect: false
+      hide:
+        event: 'unfocus'
+        effect: false
+      style:
+        width: "407px"
+        classes: 'qtip-bootstrap'
+      position:
+        my: "left center"
+        at: "right center"
+        container: ->
+          $(this)
+        viewport: $('body')
+        adjust:
+          method: "none shift"
+      events:
+        show: (events, api) ->
+          target = api.elements.target
+          setTimeout(->
+            target.addClass('active')
+          , 0)
+        hide: (events, api) ->
+          target = api.elements.target
+          target.removeClass('active')
+        render: (events, api) ->
+          tooltip = api.elements.tooltip
+          target = api.elements.target
+          tooltip.addClass("qtip-" + $(target).attr('data-class'))
+      event
+
+
+  $('dl.feats').on "click", '.feat', (event) ->
+    $(this).qtip
+      overwrite: false
+      content:
+        text: ->
+          $(this).nextAll(".feat-card").html()
+        title: ->
+          $(this).next(".feat-title").html()
+      show:
+        event: event.type
+        ready: true
+        delay: 0
+        effect: false
+      hide:
+        event: 'unfocus'
+        effect: false
+      style:
+        width: "407px"
+        classes: 'qtip-bootstrap'
+      position:
+        my: "left center"
+        at: "right center"
+        container: ->
+          $(this)
+        viewport: $('body')
+        adjust:
+          method: "none shift"
+      events:
+        show: (events, api) ->
+          target = api.elements.target
+          setTimeout(->
+            target.addClass('active')
+          , 0)
+        hide: (events, api) ->
+          target = api.elements.target
+          target.removeClass('active')
+        render: (events, api) ->
+          tooltip = api.elements.tooltip
+          target = api.elements.target
+          tooltip.addClass("qtip-" + $(target).attr('data-class'))
+      event

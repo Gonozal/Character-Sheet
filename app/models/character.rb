@@ -5,6 +5,7 @@ class Character < ActiveRecord::Base
   has_many :feats
   has_many :skills
   has_many :logs
+  has_many :rituals
 
   default_scope {
     includes(:powers, :feats, :skills)

@@ -18,13 +18,12 @@ class UsersController < ApplicationController
   def update
     if user_signed_in?
       @user = current_user
-      @user.promote_to_admin
-      @user.save
 
       if params[:user].present? and params[:user].has_key? :attachment
         begin
           @user.import_character(params[:user]).to_yaml
-        rescue
+        rescue => e
+          logger.warn e
           flash[:error] = "There was an error importing your character"
         end
       end

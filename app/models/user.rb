@@ -6,12 +6,6 @@ class User < ActiveRecord::Base
 
   has_many :characters
 
-  def promote_to_admin
-    if id == 1
-      self.admin = true
-    end
-  end
-
   def import_character(user_params)
     f = user_params[:attachment]
 

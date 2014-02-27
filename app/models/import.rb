@@ -41,6 +41,11 @@ class Import < ActiveRecord::Base
     pwrs.each do |p|
       p.first.save
     end
+
+    rtls = Import.import_rituals(c, xml)
+    rtls.each do |r|
+      r.first.save
+    end
     c
   end
 
@@ -79,6 +84,26 @@ class Import < ActiveRecord::Base
         end
       end.compact
       [power, attributes.flatten]
+    end
+  end
+
+  # Imports powers for an already processed character
+  # Character, Nokogiri::XML -> void
+  def self.import_rituals(char, xml)
+    self.rituals(xml).collect do |p|
+      ritual = char.rituals.new
+      attributes = p.collect do |attr|
+        v = attr.last
+        k = attr.first
+        v1 = (Array === v)? v.first : v
+        if RITUAL_ATTRIBUTES.include? k
+          ritual.send((k + "=").to_sym, v1)
+          nil
+        else
+          ritual.ritual_attributes.new(name: k, text: v1)
+        end
+      end.compact
+      [ritual, attributes.flatten]
     end
   end
 
@@ -154,6 +179,27 @@ class Import < ActiveRecord::Base
       h1 + h2
     end
     power
+  end
+
+  # Reads rituals from xml file
+  # Nokogiri::XML -> {string -> variable}
+  def self.rituals(xml)
+    ritual = xml.xpath('//LootTally//RulesElement[@type="Ritual"]').collect do |p|
+      h1 = [
+        ["name", p.attributes["name"].value],
+        ["description", desc = p.xpath("text()[normalize-space()]").text.strip]
+      ]
+
+      children = p.children.select{|c| c.present?}
+      h2 = children.collect do |c|
+        next unless c.attributes.has_key? "name"
+        key = c.attributes["name"].value.strip.tr(" ", "_").underscore
+        [key, c.text.strip]
+      end.compact
+
+      h1 + h2
+    end
+    ritual
   end
 
   def self.feats(xml)

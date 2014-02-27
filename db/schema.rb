@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140227104234) do
+ActiveRecord::Schema.define(version: 20140227130237) do
 
   create_table "characters", force: true do |t|
     t.integer  "user_id"
@@ -121,6 +121,26 @@ ActiveRecord::Schema.define(version: 20140227104234) do
     t.integer  "used",         default: 0
     t.boolean  "child",        default: false
     t.boolean  "prepared",     default: true
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "ritual_attributes", force: true do |t|
+    t.integer  "ritual_id"
+    t.string   "name"
+    t.text     "text"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "rituals", force: true do |t|
+    t.integer  "character_id"
+    t.string   "name"
+    t.string   "category"
+    t.string   "key_skill"
+    t.string   "flavor"
+    t.string   "description"
+    t.integer  "level"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

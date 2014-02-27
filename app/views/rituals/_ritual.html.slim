@@ -1,0 +1,11 @@
+.hidden.ritual-card
+  - if ritual.flavor.present?
+      p.attr-name.flavor
+        em.flavor = ritual.flavor
+  dl.dl-horizontal
+    - ritual.ritual_attributes.each do |attr|
+      - next if attr.text.blank?
+      dt = attr.name.titleize
+      dd = attr.text.gsub("\n", "<br />").html_safe
+  - if ritual.description.present?
+      p.attr-name = ritual.description.gsub("\n", "<br />").html_safe

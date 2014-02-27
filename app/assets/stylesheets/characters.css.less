@@ -8,6 +8,8 @@
 @at-will-color: #00821e;
 @encounter-color: #DD1919;
 @daily-color: #000;
+@feat-color: #00228e;
+@ritual-color: #DBA000;
 
 html {
   width: 700px;
@@ -62,33 +64,56 @@ td.checkmark{
   text-align: right;
 }
 
-.feats {
-  margin-top: -2px;
-  font-size: 0.8em;
-  line-height: 0.95em;
+#rituals {
+  padding-top: 8px;
+  width: 240px;
+  .headline{
+    font-size: 0.9em !important;
+  }
+
+  .rituals {
+    max-height: 250px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    margin-bottom: 0;
+    margin-top: -2px;
+    font-size: 0.8em;
+    line-height: 0.95em;
+  }
+  .ritual {
+    padding-left: 5px;
+    padding-bottom: 2px;
+    border-radius: 4px;
+  }
 }
 
-
-dt.name{
-  line-height: 13px;
+dd.short {
+  line-height: 11px;
+  font-size: 0.9em;
+  margin-bottom: 4px;
+  margin-left: 5px;
+  width: 230px;
 }
-dd.short{
+
+dd.name {
   line-height: 12px;
+  width: 230px;
 }
 
 #feats {
   padding-top: 5px;
   width: 240px;
-  >.feats {
+  .limited-height {
+    max-height: 350px !important;
+  }
+  .feats {
+    max-height: 500px;
     overflow-y: auto;
     overflow-x: hidden;
     margin-bottom: 0;
-    >.feat>.short {
-      font-size: 0.9em;
-      margin-bottom: 6px;
-      margin-left: 5px;
-      width: 235px;
-    }
+    margin-top: -2px;
+    font-size: 0.8em;
+    line-height: 0.95em;
   }
 }
 
@@ -364,6 +389,10 @@ ul.qul li{
   width: 270px;
   margin-top: -40px;
   font-size: 13px;
+
+  max-height: 800px;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 
@@ -372,6 +401,13 @@ a.unstyled {
   &:hover{
     color: inherit;
   }
+}
+
+a.feat {
+  display: block;
+  padding-left: 5px;
+  padding-bottom: 2px;
+  border-radius: 4px;
 }
 
 
@@ -423,23 +459,28 @@ a.return-link {
       text-decoration: line-through;
     }
   }
-
-  &.active {
-    &:not(.used) {
-      color: #fff;
-    }
-    &.used{
-      color: #bbb;
-    }
-    &.at-will {
-      .at-will-bg;
-    }
-    &.encounter {
-      .encounter-bg;
-    }
-    &.daily {
-      .daily-bg;
-    }
+}
+&.active {
+  :not(.used) {
+    color: #fff;
+  }
+  .used{
+    color: #bbb;
+  }
+  &.at-will {
+    .at-will-bg;
+  }
+  &.encounter {
+    .encounter-bg;
+  }
+  &.daily {
+    .daily-bg;
+  }
+  &.ritual{
+    .ritual-bg;
+  }
+  &.feat{
+    .feat-bg;
   }
 }
 
@@ -461,7 +502,19 @@ a.return-link {
     .daily-bg;
   }
 }
+.qtip-ritual {
+  .qtip-titlebar {
+    color: #FFF;
+    .ritual-bg;
+  }
+}
 
+.qtip-feat {
+  .qtip-titlebar {
+    color: #FFF;
+    .feat-bg;
+  }
+}
 .power-name {
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -504,6 +557,14 @@ a.return-link {
 .daily-bg{
   background: @at-will-color;
   #gradient > .horizontal(@daily-color; lighten(@daily-color, 33%));
+}
+.ritual-bg{
+  background: @ritual-color;
+  #gradient > .horizontal(@ritual-color; #FFDE00);
+}
+.feat-bg{
+  background: @feat-color;
+  #gradient > .horizontal(@feat-color; lighten(@feat-color, 15%));
 }
 .qtip-titlebar{
   border-bottom: 0px !important;

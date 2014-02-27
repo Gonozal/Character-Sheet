@@ -1,0 +1,10 @@
+.headline = "Rituals, Alchemy and Martial Practices"
+dl.rituals
+  - @character.rituals.each do |ritual|
+    .ritual data-class="ritual"
+      dt.needsclick.row-ish.name = ritual.name
+      dd.needsclick.row-ish.short = ritual.key_skill
+    .hidden.ritual-title
+      = ritual.name
+      span.pull-right = ritual.key_skill
+    = render(ritual)

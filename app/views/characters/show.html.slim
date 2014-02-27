@@ -10,6 +10,9 @@
       = render 'combat_stats'
       #feats.row-ish
         = render 'feats'
+      - if @character.rituals.present?
+        #rituals.row-ish
+          = render 'rituals'
     .block#abilities
       = render 'abilities'
     .block.skill-column
@@ -23,4 +26,3 @@
         = render 'log'
     .block#powers
       = render 'powers'
-= render @character.feats

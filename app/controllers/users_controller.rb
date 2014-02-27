@@ -17,13 +17,16 @@ class UsersController < ApplicationController
 
   def update
     if user_signed_in?
-      if params[:user].present? and params[:user].has_key? :attachment
-        f = params[:user][:attachment]
+      @user = current_user
+      @user.promote_to_admin
+      @user.save
 
-        puts f
-        c = Import.import_file(f.read)
-        c.user_id = current_user.id
-        c.save
+      if params[:user].present? and params[:user].has_key? :attachment
+        begin
+          @user.import_character params[:user]
+        rescue
+          flash[:error] = "There was an error importing your character"
+        end
       end
       redirect_to current_user
     else

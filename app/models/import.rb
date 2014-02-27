@@ -136,7 +136,6 @@ class Import < ActiveRecord::Base
   # Reads powers from xml file
   # Nokogiri::XML -> {string -> variable}
   def self.powers(xml)
-    a = []
     power = xml.xpath("//PowerStats/Power").collect do |p|
       h1 = [["name", p.attributes["name"].value]]
 
@@ -146,7 +145,6 @@ class Import < ActiveRecord::Base
         key = c.attributes["name"].value.strip.tr(" ", "_").underscore
         next if c.text[1] == "_" or (key[0] == "_" and key != "_parent_power")
         next if c.attributes["name"].value == "Class"
-        a << key
         if c.name.strip == "Weapon"
           ["weapon", self.weapon(c)]
         elsif key == "_parent_power"

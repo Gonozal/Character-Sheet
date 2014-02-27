@@ -8,6 +8,16 @@
       = " or "
       = link_to "Edit Account", edit_user_registration_path
 
+  - if @user.admin?
+    dl.admin-info.dl-horizontal
+      dt = "User count"
+      dd = User.count
+      dt = "Character count"
+      dd = Character.count
+      dt = "Logs generated"
+      dd = Log.count
+
+
   .characters
     - if @user.characters.any?
       span Please tap on a character to view it's character sheet
@@ -20,7 +30,7 @@
           .name = c.name
           .class = "Level #{c.level} #{c.race} #{c.klass}"
         span.delete = link_to "delete", c, method: :delete, class: :destroy,
-          confirm: "Are you sure you want to permanently delete #{c.name}?"
+          data: {confirm: "Are you sure you want to permanently delete #{c.name}?"}
 
   .upload
     = form_for @user do |f|

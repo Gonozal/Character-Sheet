@@ -17,6 +17,7 @@ class User < ActiveRecord::Base
 
     c = Import.import_file(f.read)
     c.user_id = self.id
+    logger.warn c.user_id
     # Save character save for further reference
     file_name = "#{c.klass}_#{c.level}_#{Time.now.to_i}.dnd4e"
     c.file_name = file_name

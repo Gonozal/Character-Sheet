@@ -25,7 +25,7 @@ class User < ActiveRecord::Base
     File.open(path, 'wb') do |file|
       write = file.write(f.read)
     end
-    logger.warn c.to_yaml
     c.save
+    c
   end
 end

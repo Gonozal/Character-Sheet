@@ -23,7 +23,7 @@ class UsersController < ApplicationController
 
       if params[:user].present? and params[:user].has_key? :attachment
         begin
-          logger.warn @user.import_character(params[:user])
+          logger.warn(@user.import_character(params[:user]).to_yaml)
         rescue
           flash[:error] = "There was an error importing your character"
         end

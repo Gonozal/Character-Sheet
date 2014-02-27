@@ -22,7 +22,11 @@ class UsersController < ApplicationController
       @user.save
 
       if params[:user].present? and params[:user].has_key? :attachment
-        @user.import_character(params[:user]).to_yaml
+        begin
+          @user.import_character(params[:user]).to_yaml
+        rescue
+          flash[:error] = "There was an error importing your character"
+        end
       end
       redirect_to current_user
     else

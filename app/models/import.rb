@@ -87,7 +87,6 @@ class Import < ActiveRecord::Base
   def self.misc_stats(xml)
     (DEFENSES + MISC_STATS).collect do |stat|
       xpath = "//StatBlock/Stat[alias[@name=\"#{stat}\"]]/@value"
-      logger.warn RUBY_VERSION
       [stat.strip.tr(" ", "_").underscore, xml.xpath(xpath)[0].value.to_i]
     end.compact.to_h
   end

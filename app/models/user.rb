@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
     f = user_params[:attachment]
 
     c = Import.import_file(f.read)
-    c.user_id = id
+    c.user_id = self.id
     # Save character save for further reference
     file_name = "#{c.klass}_#{c.level}_#{Time.now.to_i}.dnd4e"
     c.file_name = file_name
@@ -25,6 +25,7 @@ class User < ActiveRecord::Base
     File.open(path, 'wb') do |file|
       write = file.write(f.read)
     end
+    logger.warn c.to_yaml
     c.save
   end
 end

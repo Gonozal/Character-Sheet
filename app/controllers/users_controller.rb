@@ -23,8 +23,7 @@ class UsersController < ApplicationController
 
       if params[:user].present? and params[:user].has_key? :attachment
         begin
-          c = @user.import_character params[:user]
-          c.save
+          @user.import_character params[:user]
         rescue
           flash[:error] = "There was an error importing your character"
         end

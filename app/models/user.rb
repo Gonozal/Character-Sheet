@@ -7,18 +7,19 @@ class User < ActiveRecord::Base
   has_many :characters
 
   def import_character(user_params)
-    f = user_params[:attachment]
+    read_file = user_params[:attachment].read
 
-    c = Import.import_file(f.read)
+    c = Import.import_file(read_file)
     c.user_id = self.id
+
     # Save character save for further reference
     file_name = "#{c.klass}_#{c.level}_#{Time.now.to_i}.dnd4e"
     c.file_name = file_name
 
     path = Rails.root.join('public', 'uploads', file_name)
-    File.open(path, 'wb') do |file|
-      write = file.write(f.read)
-    end
+    new_file = File.open(path, 'w:ASCII-8BIT')
+    new_file.write(read_file)
+    new_file.close
     c.save
   end
 end

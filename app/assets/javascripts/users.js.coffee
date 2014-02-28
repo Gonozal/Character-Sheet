@@ -6,5 +6,7 @@ jQuery ->
   fileInput = $('#user_attachment')
 
   fileInput.change ->
-    $this = $(this)
-    $('#file-label').text($this.val())
+    $filename = $(this).val().replace(/^.*[/\\]/g, "")
+    if($filename)
+      $('#file-label').text($filename)
+      $('#file-submit-btn').removeClass('hidden')

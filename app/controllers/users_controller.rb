@@ -27,6 +27,7 @@ class UsersController < ApplicationController
           flash[:error] = "There was an error importing your character"
         end
       end
+
       redirect_to current_user
     else
       redirect_to new_user_session_path

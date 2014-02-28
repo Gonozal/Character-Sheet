@@ -7,6 +7,10 @@ jQuery ->
     event.preventDefault()
   $('#feats').on 'touchmove', (event) ->
     event.stopPropagation()
+  $('#powers').on 'touchmove', (event) ->
+    event.stopPropagation()
+  $('#rituals').on 'touchmove', (event) ->
+    event.stopPropagation()
 
   # Handle using a power when clicking on the "link" in the title
   $('body').on 'click', '.use-power', (event) ->
@@ -163,7 +167,7 @@ jQuery ->
         event: 'unfocus'
         effect: false
       style:
-        width: "407px"
+        width: "438px"
         classes: 'qtip-bootstrap'
       position:
         my: "left center"
@@ -206,7 +210,7 @@ jQuery ->
         event: 'unfocus'
         effect: false
       style:
-        width: "407px"
+        width: "438px"
         classes: 'qtip-bootstrap'
       position:
         my: "left center"

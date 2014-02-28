@@ -8,7 +8,7 @@ class Character < ActiveRecord::Base
   has_many :rituals
 
   default_scope {
-    includes(:powers, :feats, :skills)
+    includes(:feats, :skills)
   }
 
 

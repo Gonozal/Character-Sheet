@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140228084250) do
+ActiveRecord::Schema.define(version: 20140228084913) do
 
   create_table "characters", force: true do |t|
     t.integer  "user_id"
@@ -138,8 +138,8 @@ ActiveRecord::Schema.define(version: 20140228084250) do
     t.string   "name"
     t.string   "category"
     t.string   "key_skill"
-    t.string   "flavor"
-    t.string   "description"
+    t.text     "flavor",       limit: 255
+    t.text     "description",  limit: 255
     t.integer  "level"
     t.datetime "created_at"
     t.datetime "updated_at"

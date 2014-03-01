@@ -1,7 +1,7 @@
 = form_for @character, remote: true, html: {class: "character"} do |f|
   .row-ish#action-numbers
     .input
-      = f.label :hp_change, "Hitpoints"
+      = f.label :hp_change, "Amount"
       = f.number_field :hp_change, class: :numbers
     .input
       = f.label :hs_change, "Surges"

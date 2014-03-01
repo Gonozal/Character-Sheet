@@ -32,6 +32,19 @@ class CharactersController < ApplicationController
         @character.save
         @character = Character.find(params[:id])
         render :update_extended_rest
+      elsif params.has_key? :character and params[:character].has_key? :items_attributes
+        @character.update_attributes item_params
+        if @character.save
+          render "update_items.js.coffee"
+        end
+      else
+        @character.update_attributes coin_params
+        if @character.save
+          respond_to do |format|
+            format.html { redirect_to( @character )}
+            format.json { render :update_coins }
+          end
+        end
       end
     else
       redirect_to current_user
@@ -44,5 +57,14 @@ class CharactersController < ApplicationController
       @character.destroy
     end
     redirect_to current_user
+  end
+
+  private
+  def coin_params
+    params.require(:character).permit(*COIN_DENOMINATIONS)
+  end
+
+  def item_params
+    params.require(:character).permit(:name, items_attributes: [:id, :text, :_destroy])
   end
 end

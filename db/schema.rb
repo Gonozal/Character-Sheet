@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140228084913) do
+ActiveRecord::Schema.define(version: 20140228164300) do
 
   create_table "characters", force: true do |t|
     t.integer  "user_id"
@@ -52,6 +52,11 @@ ActiveRecord::Schema.define(version: 20140228084913) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "file_name"
+    t.integer  "cp",                                     default: 0
+    t.integer  "sp",                                     default: 0
+    t.integer  "gp",                                     default: 0
+    t.integer  "pp",                                     default: 0
+    t.integer  "ad",                                     default: 0
   end
 
   create_table "display_rules", force: true do |t|
@@ -72,6 +77,13 @@ ActiveRecord::Schema.define(version: 20140228084913) do
   end
 
   create_table "imports", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "items", force: true do |t|
+    t.integer  "character_id"
+    t.string   "text"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

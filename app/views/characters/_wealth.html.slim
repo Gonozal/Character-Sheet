@@ -1,0 +1,28 @@
+.headline = "Wealth & Posessions"
+.block.wealth
+  .row-ish.wlth.coins data-class="wealth"
+    strong = "Coins:"
+    span#coins = coin_string(@character).html_safe
+  .hidden.wealth-title = "Adjust your Coins"
+  .hidden.wealth-card
+    - COIN_DENOMINATIONS.each do |c|
+      .coin
+        = "#{c.to_s.upcase}: "
+        span.rest-in-place data-attribute="#{c}" data-formtype="number"
+          = @character.send c
+  .row-ish.wlth.items data-class="wealth"
+    strong = "Items, Gems, etc:"
+    - if @character.items.present?
+      ul.unstyled.ul-items
+        - @character.items.each do |i|
+          li = i.text
+    - else
+      span = "You don't seem to have any items"
+  .hidden.wealth-title = "Add or Modify Items"
+  .hidden.wealth-card
+    = nested_form_for @character, remote: true, html: {class: "items"} do |f|
+      = f.fields_for :items do |item_form|
+        = item_form.text_field :text
+        = item_form.link_to_remove "X", class: "remove"
+      = f.link_to_add "Add Item", :items
+      p = f.submit "submit", class: "btn"

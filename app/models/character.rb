@@ -6,11 +6,19 @@ class Character < ActiveRecord::Base
   has_many :skills
   has_many :logs
   has_many :rituals
+  has_many :items
 
   default_scope {
     includes(:feats, :skills)
   }
 
+  validates :ad, numericality: { only_integer: true }
+  validates :pp, numericality: { only_integer: true }
+  validates :gp, numericality: { only_integer: true }
+  validates :sp, numericality: { only_integer: true }
+  validates :cp, numericality: { only_integer: true }
+
+  accepts_nested_attributes_for :items, allow_destroy: true
 
   attr_accessor :hp_change, :hs_change
   before_save :generate_stat_logs

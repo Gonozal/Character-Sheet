@@ -12,6 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require 'rest_in_place'
+//= require jquery_nested_form
 //= require hammer
 //= require twitter/bootstrap
 //= require turbolinks

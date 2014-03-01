@@ -64,3 +64,5 @@ HARDCODED_ATTRIBUTES = [
 WEAPON_STATS = PowerWeapon.attribute_names
 
 RITUAL_ATTRIBUTES = Ritual.attribute_names
+
+COIN_DENOMINATIONS = [:ad, :pp, :gp, :sp, :cp]

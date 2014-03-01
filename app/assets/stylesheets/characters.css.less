@@ -482,6 +482,9 @@ a.return-link {
   &.feat{
     .feat-bg;
   }
+  &.wlth{
+    .feat-bg;
+  }
 }
 
 .qtip-at-will {
@@ -515,6 +518,8 @@ a.return-link {
     .feat-bg;
   }
 }
+
+
 .power-name {
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -687,6 +692,56 @@ a.return-link {
   }
 }
 
+.coin {
+  display: inline-block;
+  height: 31px;
+  line-height: 31px;
+  width: 120px;
+
+  .rest-in-place {
+    display: inline-block;
+    width: 70px;
+  }
+}
+
+.qtip-wealth {
+  .qtip-titlebar {
+    color: #FFF;
+    .feat-bg;
+  }
+  .qtip-content {
+    padding-left: 10px !important;
+    padding-top: 5px !important;
+  }
+  .rip-active {
+    input {
+      display: inline-block;
+      width: 70px;
+      height: 20px;
+      margin-bottom: 0px;
+    }
+  }
+  .items {
+    input {
+      width: 200px;
+      margin-bottom: 5px;
+    }
+    .remove {
+      display: inline-block;
+      width: 30px;
+      height: 30px;
+      line-height: 30px;
+      margin-bottom: 5px;
+      vertical-align: middle;
+      text-align: center;
+    }
+    p {
+      margin: 0px;
+      margin-top: 5px;
+    }
+  }
+}
+
 .block {
   float: left;
   min-height: 1px;
@@ -695,6 +750,42 @@ a.return-link {
 
 .use-power {
   font-size: 0.9em;
+}
+
+.wealth {
+  margin-top: -4px;
+  margin-left: 6px;
+  font-size: 10px;
+  line-height: 12px;
+  .row-ish:not(:first-child){
+    padding-top: 3px;
+  }
+  span {
+    display: block;
+    padding-left: 10px;
+  }
+
+  .wlth {
+    display: block;
+    width: 137px;
+    border-radius: 4px;
+    padding: 4px;
+  }
+  .ul-items{
+    padding-left: 10px;
+    li {
+      line-height: 13px;
+      font-size: 10px;
+    }
+  }
+}
+
+.wlth:not(.active){
+  ul {
+    li:nth-child(odd){
+      background-color: #f3f3f3;
+    }
+  }
 }
 
 #spellbook {

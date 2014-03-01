@@ -35,6 +35,11 @@ gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 
+# In-place editing
+gem 'rest_in_place'
+
+# Nested forms with ajax-added form fields
+gem "nested_form"
 
 # Awesome error handling
 group :development do

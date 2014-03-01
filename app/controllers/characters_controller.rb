@@ -1,9 +1,17 @@
 class CharactersController < ApplicationController
   before_filter :authenticate_user!
 
+  def index
+    redirect_to current_user
+  end
+
   def show
-    @character = Character.find(params[:id])
-    redirect_to current_user unless current_user == @character.user
+    if Character.exists? params[:id]
+      @character = Character.find(params[:id])
+      redirect_to current_user unless current_user == @character.user
+    else
+      redirect_to current_user
+    end
   end
 
   def update

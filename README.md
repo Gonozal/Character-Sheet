@@ -17,3 +17,7 @@ Power Point tracking for Psion, Battlemind, Assassin and Ardent are not implemen
 Sometimes taking a long rest as a wizard can cause your powers to disappear. Just rest again and they should resurface.
 
 If you find any other bugs, issues or have suggestions, open an issue or send an email to chars4e@googlemail.com
+
+# Credits
+
+Thanks a lot to /u/Mo0man and /u/Hourglass_Mage from the /r/dnd subreddit for their feedback and help!

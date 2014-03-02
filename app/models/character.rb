@@ -1,12 +1,18 @@
 class Character < ActiveRecord::Base
   belongs_to :user
 
-  has_many :powers
-  has_many :feats
-  has_many :skills
-  has_many :logs
-  has_many :rituals
-  has_many :items
+  has_many :powers, dependent: :delete_all
+  has_many :power_weapons, through: :powers, dependent: :delete_all
+  has_many :power_attributes, through: :powers, dependent: :delete_all
+
+  has_many :feats, dependent: :delete_all
+  has_many :skills, dependent: :delete_all
+  has_many :logs, dependent: :delete_all
+
+  has_many :rituals, dependent: :delete_all
+  has_many :ritual_attributes, through: :rituals, dependent: :delete_all
+
+  has_many :items, dependent: :delete_all
 
   default_scope {
     includes(:feats, :skills)

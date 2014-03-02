@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :characters
+  has_many :characters, dependent: :destroy
 
   def import_character(user_params)
     read_file = user_params[:attachment].read

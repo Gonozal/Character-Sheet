@@ -1,7 +1,7 @@
 class Power < ActiveRecord::Base
   belongs_to :character
-  has_many :power_weapons
-  has_many :power_attributes
+  has_many :power_weapons, dependent: :delete_all
+  has_many :power_attributes, dependent: :delete_all
 
   ORDERED = ['At-Will', 'Encounter', 'Daily']
 

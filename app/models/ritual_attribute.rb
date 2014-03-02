@@ -1,3 +1,3 @@
 class RitualAttribute < ActiveRecord::Base
-  belongs_to :power
+  belongs_to :ritual
 end

@@ -1,0 +1,11 @@
+- if @user.admin?
+  .admin
+    dl.admin-info.dl-horizontal
+      dt = "User count"
+      dd = User.count
+      dt = "Users with Characters"
+      dd = Character.group(:user_id).to_a.size
+      dt = "Character count"
+      dd = Character.count
+      dt = "Logs generated"
+      dd = Log.unscoped.count

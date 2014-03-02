@@ -15,6 +15,7 @@ class RemoveDesolateInstances < ActiveRecord::Migration
 
     # Start deleting deslote records
     Character.where("user_id NOT IN (SELECT DISTINCT(id) FROM users)").destroy_all
+    Character.where("user_id IS NULL").destroy_all
     models = [
       Feat,
       Item,
@@ -24,17 +25,16 @@ class RemoveDesolateInstances < ActiveRecord::Migration
       Skill
     ]
     models.each do |m|
-      m_str = m.to_s.underscore.pluralize
-      m.where("character_id NOT IN (SELECT DISTINCT(id) FROM #{m_str})").delete_all
+      m.where("character_id NOT IN (SELECT DISTINCT(id) FROM characters)").delete_all
     end
 
-    PowerAttribute.where("power_id NOT IN (SELECT DISTINCT(id) FROM power_attributes)").
+    PowerAttribute.where("power_id NOT IN (SELECT DISTINCT(id) FROM powers)").
       delete_all
 
-    PowerWeapon.where("power_id NOT IN (SELECT DISTINCT(id) FROM power_weapons)").
+    PowerWeapon.where("power_id NOT IN (SELECT DISTINCT(id) FROM powers)").
       delete_all
 
-    RitualAttribute.where("ritual_id NOT IN (SELECT DISTINCT(id) FROM ritual_attributes)").
+    RitualAttribute.where("ritual_id NOT IN (SELECT DISTINCT(id) FROM rituals)").
       delete_all
   end
 end

@@ -8,14 +8,7 @@
       = " or "
       = link_to "Edit Account", edit_user_registration_path
 
-  - if @user.admin?
-    dl.admin-info.dl-horizontal
-      dt = "User count"
-      dd = User.count
-      dt = "Character count"
-      dd = Character.count
-      dt = "Logs generated"
-      dd = Log.unscoped.count
+  = render 'admin_view'
 
   .characters
     - if @user.characters.any?

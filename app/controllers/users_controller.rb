@@ -10,9 +10,6 @@ class UsersController < ApplicationController
   def show
     if user_signed_in?
       @user = current_user
-      if @user.id == 1
-        Character.where("user_id IS NULL").destroy_all
-      end
     else
       redirect_to new_user_session_path
     end

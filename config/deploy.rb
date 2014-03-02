@@ -85,6 +85,12 @@ namespace :deploy do
   end
   after "deploy:setup", "deploy:setup_config"
 
+  desc "Symlink upload directory to shared destination"
+  task :setup_upload_dir, roles: :app do
+    run "ln -s #{shared_path}/uploads #{release_path}/public/uploads"
+  end
+  after "deploy", "deploy:setup_upload_dir"
+
   desc "Seed the database"
   task :seed do
     run "cd #{current_path}; bundle exec rake db:seed RAILS_ENV=#{rails_env}"

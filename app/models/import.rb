@@ -63,28 +63,47 @@ class Import < ActiveRecord::Base
     char
   end
 
+  def self.import_power_atributes(power, attr)
+    v = attr.last
+    k = attr.first
+    v1 = (Array === v)? v.first : v
+    if k == "weapon"
+      return nil if String === v
+      wpn = v.select{|k, v| v.present? and WEAPON_STATS.include? k.to_s}
+      power.power_weapons.new(wpn)
+    elsif HARDCODED_ATTRIBUTES.include? k
+      power.send((k + "=").to_sym, v1)
+      nil
+    else
+      if k == "special" and !!v1.match("twice per encounter")
+        @duplicate = true
+      end
+      power.power_attributes.new(name: k, text: v1)
+    end
+  end
+
   # Imports powers for an already processed character
   # Character, Nokogiri::XML -> void
   def self.import_powers(char, xml)
+    duplicates = []
     self.powers(xml).collect do |p|
+
       power = char.powers.new
+      @duplicate = false
       attributes = p.collect do |attr|
-        v = attr.last
-        k = attr.first
-        v1 = (Array === v)? v.first : v
-        if k == "weapon"
-          next if String === v
-          wpn = v.select{|k, v| v.present? and WEAPON_STATS.include? k.to_s}
-          power.power_weapons.new(wpn)
-        elsif HARDCODED_ATTRIBUTES.include? k
-          power.send((k + "=").to_sym, v1)
-          nil
-        else
-          power.power_attributes.new(name: k, text: v1)
-        end
+        self.import_power_atributes(power, attr)
       end.compact
+
+      if @duplicate
+        dup_power = power.dup
+        dup_attributes = p.collect do |attr|
+          self.import_power_atributes(dup_power, attr)
+        end.compact
+        duplicates << [dup_power, dup_attributes]
+      end
+
       [power, attributes.flatten]
-    end
+    end + duplicates
   end
 
   # Imports powers for an already processed character
